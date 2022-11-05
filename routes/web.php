@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MasterController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,14 +29,18 @@ Route::get('/home', [SiteController::class,'home']);
 Route::prefix('admin')->middleware(['CheckRole:admin'])->group(function () {
     Route::get('/',[MasterController::class,'home']); //localhost:8000/admin/
 
-    // Route::prefix('buku')->group(function () {
-    //     Route::get('',[BukuController::class,'index']);// localhost:8000/admin/buku
-    //     Route::get('tambah',[BukuController::class,'tambah']);
-    //     Route::post('doTambah',[BukuController::class,'doTambah']);
-    //     Route::get('ubah/{buku_id}',[BukuController::class,'ubah']); // admin/buku/ubah/79
-    //     Route::post('doUbah',[BukuController::class,'doUbah']);
-    //     Route::get('doHapus/{buku_id}',[BukuController::class,'doHapus']); //admin/buku/doHapus/79
-
-    //     Route::get('datatables', [BukuController::class,'datatables']);
-    // });
+    Route::prefix('menu')->group(function () {
+        Route::get('',[MenuController::class,'home']);
+        Route::post('docreate',[MenuController::class,'docreate']);
+        Route::post('doedit',[MenuController::class,'doedit']);
+        Route::get('delete/{id}',[MenuController::class,'delete']);
+        Route::get('details/{id}',[MenuController::class,'detail']);
+    });
+    Route::prefix('category')->group(function () {
+        Route::get('',[CategoryController::class,'home']);
+        Route::post('docreate',[CategoryController::class,'docreate']);
+        Route::post('doedit',[CategoryController::class,'doedit']);
+        Route::get('delete/{id}',[CategoryController::class,'delete']);
+        Route::get('details/{id}',[CategoryController::class,'detail']);
+    });
 });

@@ -16,7 +16,7 @@ return new class extends Migration
         if(Schema::hasTable('kategori_menu') == false){
             Schema::create('kategori_menu', function (Blueprint $table) {
                 $table->id();
-                $table->string('jenis',255);
+                $table->string('name',255);
                 $table->timestamps();
                 $table->softDeletes();
             });
