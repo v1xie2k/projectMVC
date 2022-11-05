@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class CategorySeeder extends Seeder
+class EkspedisiSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,14 +16,13 @@ class CategorySeeder extends Seeder
     public function run()
     {
         DB::statement("SET FOREIGN_KEY_CHECKS=0");
-        DB::table("kategori_menu")->truncate();
+        DB::table("ekspedisi")->truncate();
         DB::statement("SET FOREIGN_KEY_CHECKS=1");
-        DB::table("kategori_menu")->insert([
-            ["name" => "Noodles"],
-            ["name" => "Beverages"],
-            ["name" => "Dessert"],
-            ["name" => "Burger"],
-            ["name" => "Rice"],
+        DB::table("ekspedisi")->insert([
+            ["name" => "Grab Send","ongkir"=> 15000],
+            ["name" => "Go Send","ongkir"=> 14000],
+            ["name" => "Courier","ongkir"=> 13000],
+            ["name" => "Ojek","ongkir"=> 10000],
 
         ]);
     }
