@@ -8,6 +8,7 @@ class MasterController extends Controller
 {
     public function home(Request $request)
     {
-        return view('master.home');
+        if(isLogin())return view('master.home');
+        abort(403);
     }
 }

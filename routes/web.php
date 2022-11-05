@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/login', [SiteController::class,'login']);
 Route::post('/dologin', [SiteController::class,'dologin']);
+Route::get('/register', [SiteController::class,'register']);
+Route::post('/doregister', [SiteController::class,'doregister']);
+Route::post('/dologout', [SiteController::class,'dologout']);
 
 Route::get('/home', [SiteController::class,'home']);
 
