@@ -6,6 +6,7 @@ use App\Models\Users;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -19,7 +20,38 @@ class UserSeeder extends Seeder
         DB::statement("SET FOREIGN_KEY_CHECKS=0");
         DB::table("users")->truncate();
         DB::statement("SET FOREIGN_KEY_CHECKS=1");
-        // Users::factory()->count(10)->make();
+        DB::table("users")->insert([
+            [
+            "name" => "admin1" ,
+            "email" => "admin1@gmail.com",
+            'password' => Hash::make('123'),
+            "alamat" => "jl admin1",
+            "saldo" => 0,
+            "role" => "admin",
+            "created_at" => date("Y-m-d H-i-s"),
+            "updated_at" => date("Y-m-d H-i-s"),
+            ],
+            [
+            "name" => "admin2" ,
+            "email" => "admin2@gmail.com",
+            'password' => Hash::make('123'),
+            "alamat" => "jl admin2",
+            "saldo" => 0,
+            "role" => "admin",
+            "created_at" => date("Y-m-d H-i-s"),
+            "updated_at" => date("Y-m-d H-i-s"),
+            ],
+            [
+            "name" => "admin3" ,
+            "email" => "admin3@gmail.com",
+            'password' => Hash::make('123'),
+            "alamat" => "jl admin3",
+            "saldo" => 0,
+            "role" => "admin",
+            "created_at" => date("Y-m-d H-i-s"),
+            "updated_at" => date("Y-m-d H-i-s"),
+            ],
+        ]);
         Users::factory()->count(10)->create();
     }
 }
