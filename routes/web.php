@@ -35,6 +35,7 @@ Route::prefix('admin')->middleware(['CheckRole:admin'])->group(function () {
         Route::post('doedit',[MenuController::class,'doedit']);
         Route::get('delete/{id}',[MenuController::class,'delete']);
         Route::get('details/{id}',[MenuController::class,'detail']);
+        Route::get('lprod',[MenuController::class,'lprod']);
     });
     Route::prefix('category')->group(function () {
         Route::get('',[CategoryController::class,'home']);

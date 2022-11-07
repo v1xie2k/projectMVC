@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\KategoriMenu;
 use App\Models\Menu;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
+
 
 class MenuController extends Controller
 {
@@ -67,6 +69,31 @@ class MenuController extends Controller
         }else{
             return redirect()->back()->with('pesan',['tipe'=>0, 'isi'=> 'Gagal delete data tidak ditemukan']);
         }
+    }
+
+
+    public function lprod()
+    {
+        $menus = Menu::get();
+        $categories = KategoriMenu::get();
+        return DataTables::of($menus)
+            ->addColumn('btnEdit', function ($data) {
+                return "<a href='" . url("sales/customer/ecustomer/$data->customer_id") . "' class='btn btn-warning'>Edit</a>";
+            })
+            ->addColumn('btnDelete', function ($data) {
+                return "<a href='" . url("sales/customer/dcustomer/$data->customer_id") . "' class='btn btn-danger' onclick='return confirm(`Are you sure you want to delete $data->customer_nama and their PICs ?`);'>Delete</a>";
+            })
+            ->addColumn('btnDetail', function ($data) {
+                return "<a class='btn btn-warning detail' option='$data->customer_id'>Detail</a>";
+            })
+            ->addColumn('level', function ($data) {
+                $load = customers_level::where('level_id', $data->level_id)->pluck('status_nama');
+                $hasil = str_replace(array('"','[',']' ), '', $load);
+                // return $hasil;
+                return "<p>$hasil</p>";
+            })
+            ->rawColumns(['btnDelete', 'btnEdit', 'level', 'btnDetail'])
+            ->make(true);
     }
 
 }

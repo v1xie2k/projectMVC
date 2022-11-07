@@ -17,7 +17,7 @@ return new class extends Migration
             Schema::create('users', function (Blueprint $table) {
                 $table->id()->key();
                 $table->string('name',255);
-                $table->text('email')->unique();
+                $table->text('email');
                 $table->text('password');
                 $table->text('alamat');
                 $table->integer('saldo',11)->autoIncrement(false);
