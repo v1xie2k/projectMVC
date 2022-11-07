@@ -62,35 +62,18 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody>
-                    @if ($menus)
-                        @foreach ($menus as $values)
-                            <tr>
-                                <td>{{ $values->id }}</td>
-                                <td>{{ $values->name }}</td>
-                                <td>{{ $values->Kategories->name }}</td>
-                                <td>{{ $values->harga }}</td>
-                                <td>{{ $values->deskripsi }}</td>
-                                <td>
-                                    <a href="{{ url('admin/menu/details/' . $values->id) }}"
-                                        class="btn btn-primary">Detail</a>
-                                    <a href="{{ url('admin/menu/delete/' . $values->id) }}"
-                                        class="btn btn-danger">Delete</a>
-                                </td>
-                            </tr>
-                        @endforeach
-                    @endif
-                </tbody>
             </table>
         </div>
 
     </div>
 
 @endsection
+
 @section('plugins.Datatables', true)
-@push('js')
+@section('custom_js')
 <script>
-    $(function(){
+   $(document).ready(function(){
+        console.log("test");
         var table = $("#table").DataTable({
             processing: true,
             serverSide: true,
@@ -98,20 +81,18 @@
                 url: "{{ url('admin/menu/lprod') }}",
             },
             'columnDefs': [ {
-                'targets': [4,5,6], /* column index */
+                'targets': [4,5], /* column index */
                 'orderable': false, /* true or false */
                 }],
             columns: [
-                { data: 'user_id', name: 'user_id' },
-                { data: 'user_fullname', name: 'user_fullname' },
-                { data: 'user_username', name: 'user_username' },
-                { data: 'user_email', name: 'user_email' },
-                { data: 'role_id', name: 'role_id' },
-                { data: 'btnEdit', name: 'btnEdit' },
-                { data: 'btnDelete', name: 'btnDelete' },
-                { data: 'btnReset', name: 'btnReset' }
+                { data: 'id', name: 'id' },
+                { data: 'name', name: 'name' },
+                { data: 'id_kategori', name: 'id_kategori' },
+                { data: 'harga', name: 'harga' },
+                { data: 'deskripsi', name: 'deskripsi' },
+                { data: 'btnDelete', name: 'btnDelete' }
             ]
         });
     });
 </script>
-@endpush
+@stop

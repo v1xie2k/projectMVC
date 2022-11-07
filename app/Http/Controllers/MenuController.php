@@ -12,9 +12,9 @@ class MenuController extends Controller
 {
     public function home(Request $request)
     {
-        $menus = Menu::get();
+        // $menus = Menu::get();
         $categories = KategoriMenu::get();
-        return view('master.Items.home',compact('menus','categories'));
+        return view('master.Items.home',compact('categories'));
     }
     public function docreate(Request $request)
     {
@@ -75,6 +75,7 @@ class MenuController extends Controller
     public function lprod()
     {
         $menus = Menu::get();
+        dd($menus);
         $categories = KategoriMenu::get();
         return DataTables::of($menus)
             ->addColumn('btnEdit', function ($data) {
@@ -86,13 +87,8 @@ class MenuController extends Controller
             ->addColumn('btnDetail', function ($data) {
                 return "<a class='btn btn-warning detail' option='$data->customer_id'>Detail</a>";
             })
-            ->addColumn('level', function ($data) {
-                $load = customers_level::where('level_id', $data->level_id)->pluck('status_nama');
-                $hasil = str_replace(array('"','[',']' ), '', $load);
-                // return $hasil;
-                return "<p>$hasil</p>";
-            })
-            ->rawColumns(['btnDelete', 'btnEdit', 'level', 'btnDetail'])
+
+            ->rawColumns(['btnDelete', 'btnEdit', 'btnDetail'])
             ->make(true);
     }
 
