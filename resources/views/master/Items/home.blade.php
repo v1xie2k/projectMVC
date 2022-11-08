@@ -14,7 +14,7 @@
         @endif
 
 
-        <form action="{{ url('/admin/menu/docreate') }}" method="post">
+        <form action="{{ url('/admin/menu/docreate') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="id_kategori">Choose a category:</label>
@@ -29,6 +29,12 @@
                 <input type="text" name="name" class="form-control" value="{{ old('name') }}"
                     aria-describedby="emailHelp">
             </div>
+            <div class="mb-3">
+                <label class="form-label">Upload Pict</label>
+                <input type="file" name="photo" class="form-control" value="{{ old('photo') }}"
+                    aria-describedby="emailHelp">
+            </div>
+
             <div class="mb-3">
                 <label class="form-label">harga</label>
                 <input type="number" name="harga" class="form-control" min:1 value="{{ old('harga') }}">
@@ -57,6 +63,7 @@
                         <th>Menu Id</th>
                         <th>Name</th>
                         <th>Kategori</th>
+                        <th>Pict</th>
                         <th>Price</th>
                         <th>Description</th>
                         <th>Action</th>

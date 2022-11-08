@@ -22,7 +22,7 @@ class CategorySeeder extends Seeder
             ["name" => "Noodles"],
             ["name" => "Beverages"],
             ["name" => "Dessert"],
-            ["name" => "Burger"],
+            ["name" => "Sushi"],
             ["name" => "Rice"],
 
         ]);

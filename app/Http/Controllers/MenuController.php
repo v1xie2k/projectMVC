@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\KategoriMenu;
 use App\Models\Menu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 
 
@@ -20,11 +21,15 @@ class MenuController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required',
+            'photos' => 'required|mimes:png,jpg,jpeg,webp|max:10000',
             'deskripsi' => 'required',
             'harga' => 'required|numeric'
         ]);
         $data = $request->all();
-        if(Menu::create($data)){
+        $id = Menu::create($data);
+        if($id){
+            $namaFile = $id->id.".".$request->file("photo")->getClientOriginalExtension();
+            $path = $request->file("photo")->storeAs("items", $namaFile, "public");
             return redirect()->back()->with('pesan',['tipe'=>1, 'isi'=> 'Berhasil insert']);
         }
         else{
@@ -34,17 +39,30 @@ class MenuController extends Controller
     public function detail(Request $request)
     {
         $menu = Menu::find($request->id);
-        return view('master.Items.detail',compact('menu'));
+        $categories = KategoriMenu::get();
+        $pict = Storage::disk('public')->files("items");
+        for ($i=0; $i < count($pict); $i++) {
+            if(pathinfo($pict[$i])["filename"] == $request->id){
+                $picture = pathinfo($pict[$i])["basename"];
+            }
+        }
+        return view('master.Items.detail',compact('menu', 'categories', 'picture'));
     }
     public function doedit(Request $request)
     {
         $menu = Menu::find($request->id);
         $validated = $request->validate([
             'name' => 'required',
+            'photos' => 'mimes:png,jpg,jpeg,webp|max:10000',
             'deskripsi' => 'required',
             'harga' => 'required|numeric'
         ]);
         $data = $request->all();
+        if($request->photo != null){
+            Storage::disk('public')->delete('items/'.$request->pict);
+            $namaFile = $request->id.".".$request->file("photo")->getClientOriginalExtension();
+            $path = $request->file("photo")->storeAs("items", $namaFile, "public");
+        }
         if($menu){
             if($menu->update($data)){
                 return redirect()->back()->with('pesan',['tipe'=>1, 'isi'=> 'Berhasil update']);

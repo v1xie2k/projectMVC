@@ -10,19 +10,32 @@
             @endforeach
         </ul>
     @endif
-    <form action="{{url('/admin/menu/doedit')}}" method="post">
+    <form action="{{url('/admin/menu/doedit')}}" method="post" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="id" value="{{$menu->id}}">
         <div class="mb-3">
-            <label for="id_kategori">Choose a category: (nanti dimerge ke database) </label>
+            <label for="id_kategori">Choose a category:</label>
             <select name="id_kategori" id="category">
-                <option value="1">makanan</option>
-                <option value="2">minuman</option>
+                @foreach ($categories as $value)
+                @if ($value->id == $menu->id_kategori)
+                    <option value="{{ $value->id }}" selected>{{ $value->name }}</option>
+                @else
+
+                    <option value="{{ $value->id }}">{{ $value->name }}</option>
+                @endif
+
+                @endforeach
             </select>
         </div>
         <div class="mb-3">
             <label  class="form-label">Name</label>
             <input type="text" name="name" class="form-control" value="{{$menu->name}}" aria-describedby="emailHelp">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Upload Pict</label>
+            <input type="file" name="photo" class="form-control" value="{{ old('photo') }}"
+                aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
             <label class="form-label">harga</label>
@@ -33,7 +46,12 @@
             <input type="text" name="deskripsi" class="form-control" value="{{$menu->deskripsi}}" aria-describedby="emailHelp">
         </div>
         <button type="submit" class="btn btn-success">Edit</button>
-    </form>
+        <input type="hidden" name="pict" value="{{$picture}}">
+    </form><br>
+    <label  class="form-label">Item Pict</label>
+    <div class="card" style="width: 18rem;">
+        <img src="{{asset('storage/items/'.$picture)}}" class="card-img-top" alt="...">
+    </div>
     @if (Session::has('pesan'))
         @php($pesan = Session::get('pesan'))
         @if ($pesan['tipe'] == 0)
