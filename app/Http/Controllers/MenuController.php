@@ -21,7 +21,7 @@ class MenuController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required',
-            'photos' => 'required|mimes:png,jpg,jpeg,webp|max:10000',
+            'photo' => 'required|mimes:png,jpg,jpeg,webp|max:10000',
             'deskripsi' => 'required',
             'harga' => 'required|numeric'
         ]);
@@ -53,7 +53,7 @@ class MenuController extends Controller
         $menu = Menu::find($request->id);
         $validated = $request->validate([
             'name' => 'required',
-            'photos' => 'mimes:png,jpg,jpeg,webp|max:10000',
+            'photo' => 'mimes:png,jpg,jpeg,webp|max:10000',
             'deskripsi' => 'required',
             'harga' => 'required|numeric'
         ]);

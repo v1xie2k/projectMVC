@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\SiteController;
@@ -28,13 +29,10 @@ Route::get('/dologout', [SiteController::class,'dologout']);
 Route::prefix('home')->group(function () {
     Route::get('/', [SiteController::class,'home']);
 
-    // Route::prefix('product')->group(function () {
-    //     // Route::get('',[CategoryController::class,'home']);
-    //     // Route::post('docreate',[CategoryController::class,'docreate']);
-    //     // Route::post('doedit',[CategoryController::class,'doedit']);
-    //     // Route::get('delete/{id}',[CategoryController::class,'delete']);
-    //     // Route::get('details/{id}',[CategoryController::class,'detail']);
-    // });
+    Route::prefix('menu')->group(function () {
+        Route::get('',[HomePageController::class,'home']);
+        Route::get('{id}',[HomePageController::class,'listitems']);
+    });
     Route::prefix('user')->group(function () {
         Route::get('profile/{id}',[UserController::class,'profile']);
         Route::get('editprofile/{id}',[UserController::class,'editprofile']);
