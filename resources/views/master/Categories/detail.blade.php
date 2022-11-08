@@ -16,6 +16,9 @@
         <div class="mb-3">
             <label  class="form-label">Name</label>
             <input type="text" name="name" class="form-control" value="{{$category->name}}" aria-describedby="emailHelp">
+            @error('name')
+                <div class="error"> {{$message}} </div> <br>
+            @enderror
         </div>
         <button type="submit" class="btn btn-success">Edit</button>
     </form>

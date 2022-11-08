@@ -23,15 +23,24 @@
                     <label>Name: </label><br>
                     <input type="text" name="name" class="name" value="{{ old('name') }}"
                         aria-describedby="emailHelp" style="width: 100%;">
+                    @error('name')
+                        <div class="error"> {{$message}} </div> <br>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label>Email address: </label><br>
                     <input type="text" name="email" class="email" value="{{ old('email') }}"
                         aria-describedby="emailHelp" style="width: 100%;">
+                    @error('email')
+                        <div class="error"> {{$message}} </div> <br>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label>Password: </label><br>
                     <input type="password" name="password" class="password" style="width: 100%;">
+                    @error('password')
+                        <div class="error"> {{$message}} </div> <br>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label>Confirm Password: </label><br>
@@ -41,6 +50,9 @@
                     <label class="form-label">Alamat: </label><br>
                     <input type="text" name="alamat" class="alamat" value="{{ old('alamat') }}"
                         aria-describedby="emailHelp" style="width: 100%;">
+                    @error('alamat')
+                        <div class="error"> {{$message}} </div> <br>
+                    @enderror
                 </div>
                 <button type="submit" class="btn btn-success">Register</button>
             </form>

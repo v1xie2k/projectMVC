@@ -10,4 +10,6 @@
         </form>
     @endif
     ini page user
+    temporary button ke user profile
+    <a href="{{url('home/user/profile/'.getYangLogin()->id)}}"><button>userprofile</button></a>
 @endsection
