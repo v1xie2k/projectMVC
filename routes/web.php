@@ -3,9 +3,10 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\MasterController;
+use App\Http\Controllers\MasterUserController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\SiteController;
-use App\Http\Controllers\TopupController;
+use App\Http\Controllers\MasterTopupController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -66,9 +67,9 @@ Route::prefix('admin')->middleware(['CheckRole:admin'])->group(function () {
         Route::get('details/{id}',[CategoryController::class,'detail']);
     });
     Route::prefix('user')->group(function () {
-        Route::get('',[UserController::class,'home']);
+        Route::get('',[MasterUserController::class,'home']);
     });
     Route::prefix('topup')->group(function () {
-        Route::get('',[TopupController::class,'home']);
+        Route::get('',[MasterTopupController::class,'home']);
     });
 });

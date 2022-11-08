@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\HistoryTopUP;
 use Illuminate\Http\Request;
 
-class TopupController extends Controller
+class MasterTopupController extends Controller
 {
     public function home(Request $request)
     {
