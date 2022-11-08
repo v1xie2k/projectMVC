@@ -12,4 +12,10 @@ class MasterTopupController extends Controller
         $topup = HistoryTopUP::get();
         return view('master.topup.home',compact('topup'));
     }
+
+    public function home2(Request $request)
+    {
+        $topup = HistoryTopUP::get()->where('updated_at is not null');
+        return view('master.topup.history',compact('topup'));
+    }
 }

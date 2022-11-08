@@ -71,5 +71,6 @@ Route::prefix('admin')->middleware(['CheckRole:admin'])->group(function () {
     });
     Route::prefix('topup')->group(function () {
         Route::get('',[MasterTopupController::class,'home']);
+        Route::get('history',[MasterTopupController::class,'home2']);
     });
 });
