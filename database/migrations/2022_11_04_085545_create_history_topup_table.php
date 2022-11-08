@@ -18,6 +18,7 @@ return new class extends Migration
                 $table->id();
                 $table->integer('id_user',11)->autoIncrement(false);
                 $table->integer('topup',11)->autoIncrement(false);
+                $table->integer('status',1)->autoIncrement(false)->comment('0 for incoming,1 for accepted, if declined then it goes to refund');
                 $table->dateTime('date_time')->default(date('Y-m-d H:i:s'));
                 $table->timestamps();
                 $table->softDeletes();

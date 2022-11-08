@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\SiteController;
@@ -24,8 +25,26 @@ Route::post('/dologin', [SiteController::class,'dologin']);
 Route::get('/register', [SiteController::class,'register']);
 Route::post('/doregister', [SiteController::class,'doregister']);
 Route::post('/dologout', [SiteController::class,'dologout']);
+Route::get('/dologout', [SiteController::class,'dologout']);
 
-Route::get('/home', [SiteController::class,'home']);
+Route::prefix('home')->group(function () {
+    Route::get('/', [SiteController::class,'home']);
+
+    Route::prefix('menu')->group(function () {
+        Route::get('',[HomePageController::class,'home']);
+        Route::get('{id}',[HomePageController::class,'listitems']);
+    });
+    Route::prefix('user')->group(function () {
+        Route::get('profile/{id}',[UserController::class,'profile']);
+        Route::get('editprofile/{id}',[UserController::class,'editprofile']);
+        Route::get('editpassword/{id}',[UserController::class,'editpassword']);
+        // Route::post('docreate',[UserController::class,'docreate']);
+        Route::post('doedit/{id}',[UserController::class,'doedit']);
+        Route::post('doedit/password/{id}',[UserController::class,'doeditpassword']);
+        // Route::get('delete/{id}',[UserController::class,'delete']);
+        // Route::get('details/{id}',[UserController::class,'detail']);
+    });
+});
 
 // Route::get('/admin',[MasterController::class,'home']); //localhost:8000/admin/
 Route::prefix('admin')->middleware(['CheckRole:admin'])->group(function () {
