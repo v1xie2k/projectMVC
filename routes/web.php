@@ -4,6 +4,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\TopupController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,5 +45,11 @@ Route::prefix('admin')->middleware(['CheckRole:admin'])->group(function () {
         Route::post('doedit',[CategoryController::class,'doedit']);
         Route::get('delete/{id}',[CategoryController::class,'delete']);
         Route::get('details/{id}',[CategoryController::class,'detail']);
+    });
+    Route::prefix('user')->group(function () {
+        Route::get('',[UserController::class,'home']);
+    });
+    Route::prefix('topup')->group(function () {
+        Route::get('',[TopupController::class,'home']);
     });
 });
