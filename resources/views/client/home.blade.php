@@ -1,19 +1,26 @@
 @extends('layouts.layout')
 @include('navbar')
 @section('content')
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>HomePage</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link href="index.css" rel="stylesheet" type="text/css" />
-    <!-- <link rel="stylesheet" href=" {{asset('css')}}"> --> 
-  </head>
-  <body>
-   <!-- buat tulisan didepan -->
-    <div class="tulisan_depan">
+<!-- <<<<<<< HEAD
+=======
+    {{-- {{isLogin()}}
+    {{getYangLogin()}} --}}
+    @if (isLogin())
+        <form action="{{url('dologout')}}" method="post">
+            @csrf
+            <button type="submit" class="btn btn-success">Logout</button>
+        </form>
+    @endif
+    ini page user
+    temporary button ke user profile
+    <a href="{{url('home/user/profile/'.getYangLogin()->id)}}"><button>userprofile</button></a><br>
+    temporary button ke menu page
+    <a href="{{url('home/menu')}}"><button>Menu</button></a>
+>>>>>>> 2c6395c9bd58f979eb02c362128d37047953703b -->
+
+
+<!-- buat tulisan didepan -->
+<div class="tulisan_depan">
       <div class="judul">
           <center>
           <div class="judul_1"> いらっしゃいませ</div>
@@ -204,6 +211,5 @@
   </div>
   <!-- end footer -->
 </div>
-</body>
-</html>
 @endsection
+
