@@ -9,8 +9,14 @@
             @csrf
             <label for="email">Email:</label>
             <input type="email" name="email" id="email" value="{{old('email')}}" placeholder="email"><br>
+            @error('email')
+                <div class="error"> {{$message}} </div> <br>
+            @enderror
             <label for="pass">Password:</label>
             <input type="password" name="password" id="pass"><br>
+            @error('password')
+                <div class="error"> {{$message}} </div> <br>
+            @enderror
             <button type="submit" name="submit">Login</button>
         </form>
 

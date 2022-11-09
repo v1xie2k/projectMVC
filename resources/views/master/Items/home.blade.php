@@ -28,21 +28,33 @@
                 <label class="form-label">Name</label>
                 <input type="text" name="name" class="form-control" value="{{ old('name') }}"
                     aria-describedby="emailHelp">
+                @error('name')
+                    <div class="error"> {{$message}} </div> <br>
+                @enderror
             </div>
             <div class="mb-3">
                 <label class="form-label">Upload Pict</label>
                 <input type="file" name="photo" class="form-control" value="{{ old('photo') }}"
                     aria-describedby="emailHelp">
+                @error('photo')
+                    <div class="error"> {{$message}} </div> <br>
+                @enderror
             </div>
 
             <div class="mb-3">
                 <label class="form-label">harga</label>
                 <input type="number" name="harga" class="form-control" min:1 value="{{ old('harga') }}">
+                @error('harga')
+                    <div class="error"> {{$message}} </div> <br>
+                @enderror
             </div>
             <div class="mb-3">
                 <label class="form-label">Deskripsi</label>
                 <input type="text" name="deskripsi" class="form-control" value="{{ old('deskripsi') }}"
                     aria-describedby="emailHelp">
+                @error('deskripsi')
+                    <div class="error"> {{$message}} </div> <br>
+                @enderror
             </div>
             <button type="submit" class="btn btn-success">Add</button>
         </form>
