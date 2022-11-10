@@ -54,5 +54,6 @@
         <button class="btn btn-primary">Bayar</button>
         <input type="hidden" name="id_user" value="{{getYangLogin()->id}}">
         <input type="hidden" name="total" value="{{$total}}">
+        <input type="hidden" name="quantity" value="{{$qty}}">
     </form>
 @endsection

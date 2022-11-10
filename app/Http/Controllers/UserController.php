@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dtrans;
+use App\Models\Htrans;
 use App\Models\Users;
 use App\Rules\CheckEmail;
 use App\Rules\CheckOldPassword;
@@ -14,40 +16,25 @@ class UserController extends Controller
 {
     public function profile(Request $request)
     {
-        $picture = Storage::disk('public')->files("users");
-        // for ($i=0; $i < count($picture); $i++) {
-        //     if(pathinfo($picture[$i])["filename"] == getYangLogin()->id){
-        //         $picture = pathinfo($picture[$i])["basename"];
-        //     }
-        // }
-        foreach($picture as $val)
+        $pictures = Storage::disk('public')->files("users");
+        $picture = "default.jpg";
+        foreach($pictures as $val)
         {
             if(pathinfo($val)["filename"] == getYangLogin()->id){
                 $picture = pathinfo($val)["basename"];
             }
         }
         return view('client.user.profile',compact('picture'));
-        // if($picture){
-
-        // }
-        // return view('client.user.profile');
     }
     public function editprofile(Request $request)
     {
         $picture = Storage::disk('public')->files("users");
-        // dd(count($picture));
-        // dd($picture);
         foreach($picture as $val)
         {
             if(pathinfo($val)["filename"] == getYangLogin()->id){
                 $picture = pathinfo($val)["basename"];
             }
         }
-        // for ($i=0; $i < count($picture); $i++) {
-        //     if(pathinfo($picture[$i])["filename"] == getYangLogin()->id){
-        //         $picture = pathinfo($picture[$i])["basename"];
-        //     }
-        // }
         return view('client.user.editprofile',compact('picture'));
         // return view('client.user.editprofile');
     }
@@ -56,7 +43,6 @@ class UserController extends Controller
         $user = Users::find($request->id);
         $validated = $request->validate([
             'name' => 'required|min:4|max:25',
-            // 'email' => ['required', 'email', new CheckEmail],
             'photos' => 'mimes:png,jpg,jpeg,webp|max:10000',
             'alamat' => 'required'
         ]);
@@ -84,5 +70,16 @@ class UserController extends Controller
         $data["password"] = Hash::make($request->password);
         $user->update($data);
         return redirect()->back()->with('pesan',['tipe'=>1, 'isi'=> 'success change password']);
+    }
+    public function historyTrans(Request $request)
+    {
+        $histories = Htrans::where('id_user',getYangLogin()->id)->get();
+        // dd($histories);
+        return view('client.user.historytrans',compact('histories'));
+    }
+    public function historyTransDetail(Request $request)
+    {
+        $details = Dtrans::where('id_htrans', $request->id)->get();
+        return view('client.user.detailtrans',compact('details'));
     }
 }

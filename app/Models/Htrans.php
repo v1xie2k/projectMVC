@@ -21,10 +21,14 @@ class Htrans extends Model
     protected $fillable = [
         'id_user',
         'id_ekspedisi',
+        'quantity',
         'total',
     ];
     public function Users(){
         return $this->belongsTo(Users::class, 'id_user','id');
+    }
+    public function Ekspedisis(){
+        return $this->belongsTo(Ekspedisi::class, 'id_ekspedisi','id');
     }
     public function Dtrans(){
         return $this->hasMany(Dtrans::class, 'id','id_htrans');

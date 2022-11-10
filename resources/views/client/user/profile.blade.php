@@ -14,6 +14,7 @@
     </div>
     <a href="{{url('home/user/editprofile/'.getYangLogin()->id)}}"><button>editprofile</button></a>
     <a href="{{url('home/user/editpassword/'.getYangLogin()->id)}}"><button>editpassword</button></a>
+    <a href="{{url('home/user/history/trans')}}"><button>history trans</button></a>
     <br><br>
     <label  class="form-label">user Pict</label>
     <div class="card" style="width: 18rem;">

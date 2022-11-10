@@ -50,7 +50,7 @@ Route::prefix('home')->group(function () {
     });
 
     Route::prefix('user')->middleware([CheckLogin::class])->group(function () {
-        Route::get('profile/{id}',[UserController::class,'profile']);
+        Route::get('profile',[UserController::class,'profile']);
         Route::get('editprofile/{id}',[UserController::class,'editprofile']);
         Route::get('editpassword/{id}',[UserController::class,'editpassword']);
         // Route::post('docreate',[UserController::class,'docreate']);
@@ -58,6 +58,8 @@ Route::prefix('home')->group(function () {
         Route::post('doedit/password/{id}',[UserController::class,'doeditpassword']);
         // Route::get('delete/{id}',[UserController::class,'delete']);
         // Route::get('details/{id}',[UserController::class,'detail']);
+        Route::get('history/trans',[UserController::class,'historyTrans']);
+        Route::get('history/trans/detail/{id}',[UserController::class,'historyTransDetail']);
     });
 });
 

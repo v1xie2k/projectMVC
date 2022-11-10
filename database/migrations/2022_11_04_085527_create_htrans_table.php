@@ -18,6 +18,7 @@ return new class extends Migration
                 $table->id();
                 $table->integer('id_user',11)->autoIncrement(false);
                 $table->integer('id_ekspedisi',11)->autoIncrement(false);
+                $table->integer('quantity',11)->autoIncrement(false);
                 $table->integer('total',11)->autoIncrement(false);
                 $table->date('date')->default(date('Y-m-d'));
                 $table->timestamps();
