@@ -70,6 +70,10 @@ Route::prefix('admin')->middleware(['CheckRole:admin'])->group(function () {
     });
     Route::prefix('user')->group(function () {
         Route::get('',[MasterUserController::class,'home']);
+        Route::get('reset/{id}',[MasterUserController::class,'reset']);
+        Route::get('delete/{id}',[MasterUserController::class,'delete']);
+        Route::post('dosearch',[MasterUserController::class,'search']);
+        // Route::get('sorting',[MasterUserController::class,'sort']);
     });
     Route::prefix('topup')->group(function () {
         Route::get('',[MasterTopupController::class,'home']);

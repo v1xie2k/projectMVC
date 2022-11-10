@@ -10,7 +10,7 @@
                 <label for="sort">Sort by:</label>
                 <select name="sort" id="sorting">
                     {{-- @foreach ($categories as $value) --}}
-                        <option value="asc">Newest Request Top Up</option>
+                        <option value="new">Newest Request Top Up</option>
                         <option value="old">Oldest Request Top Up</option>
                     {{-- @endforeach --}}
                 </select><br><br>
