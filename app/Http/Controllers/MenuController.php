@@ -27,8 +27,11 @@ class MenuController extends Controller
     {
         $menus = Menu::get();
         return DataTables::of($menus)
-            ->addColumn('btnEdit', function ($data) {
-                return "<a href='#' class='btn btn-warning'>Edit</a>";
+            ->addColumn('kategori', function ($data) {
+                $load = KategoriMenu::where('id', $data->id_kategori)->pluck('name');
+                $hasil = str_replace(array('"','[',']' ), '', $load);
+                // return $hasil;
+                return "<p>$hasil</p>";
             })
             ->addColumn('btnDelete', function ($data) {
                 return "<a href='#' class='btn btn-danger' onclick='return confirm(`Are you sure you want to delete $data->customer_nama and their PICs ?`);'>Delete</a>";
@@ -37,7 +40,7 @@ class MenuController extends Controller
                 return "<a class='btn btn-warning detail' option='$data->customer_id'>Detail</a>";
             })
 
-            ->rawColumns(['btnDelete', 'btnEdit', 'btnDetail'])
+            ->rawColumns(['btnDelete', 'kategori', 'btnDetail'])
             ->make(true);
     }
 
@@ -118,20 +121,22 @@ class MenuController extends Controller
     public function lprod()
     {
         $menus = Menu::get();
-        dd($menus);
-        $categories = KategoriMenu::get();
+        // dd($menus);
         return DataTables::of($menus)
-            ->addColumn('btnEdit', function ($data) {
-                return "<a href='" . url("sales/customer/ecustomer/$data->customer_id") . "' class='btn btn-warning'>Edit</a>";
+            ->addColumn('kategori', function ($data) {
+                $load = KategoriMenu::where('id', $data->id_kategori)->pluck('name');
+                $hasil = str_replace(array('"','[',']' ), '', $load);
+                // return $hasil;
+                return "<p>$hasil</p>";
             })
             ->addColumn('btnDelete', function ($data) {
-                return "<a href='" . url("sales/customer/dcustomer/$data->customer_id") . "' class='btn btn-danger' onclick='return confirm(`Are you sure you want to delete $data->customer_nama and their PICs ?`);'>Delete</a>";
+                return "<a href='#' class='btn btn-danger' onclick='return confirm(`Are you sure you want to delete $data->customer_nama and their PICs ?`);'>Delete</a>";
             })
-            ->addColumn('btnDetail', function ($data) {
-                return "<a class='btn btn-warning detail' option='$data->customer_id'>Detail</a>";
+            ->addColumn('picture', function ($data) {
+                return "<img src='{{asset(`css/gallery/mochi.png`)}}' height=\"50\"/>";
             })
 
-            ->rawColumns(['btnDelete', 'btnEdit', 'btnDetail'])
+            ->rawColumns(['btnDelete', 'kategori', 'picture'])
             ->make(true);
     }
 

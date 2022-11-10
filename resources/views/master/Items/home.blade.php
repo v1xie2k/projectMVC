@@ -1,6 +1,45 @@
-@extends('layouts.layout2')
-@include('navbar2')
-@section('content')
+@extends('adminlte::master')
+{{-- @include('navbar2') --}}
+@section('adminlte_css_pre')
+<link rel="stylesheet" href="{{ asset('css/mycssadmin.css') }}" media="screen">
+@endsection
+{{-- @section('adminlte_css')
+<style>
+.nav{
+    padding: 0;
+    height: 8vh;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin: 0;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1
+}
+.logo{
+    height: 8vh;
+}
+
+.ar {
+    color: #ffffff;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    line-height: 42px;
+}
+</style>
+@endsection --}}
+@section('body')
+    <div class="nav">
+        <img class="logo" src="{{asset("css/gallery/logo.png")}}" alt="">
+        <a class="ar" href="{{url('admin/user')}}">List User</a>
+        <a class="ar" href="{{url('admin/menu')}}">Master Product</a>
+        <a class="ar" href="{{url('admin/topup')}}">TopUp Request</a>
+        <a class="ar" href="{{url('admin/topup/history')}}">Transaction History</a>
+        <a class="ar" href="#">TopUp History</a>
+        <div style="display: flex; justify-content: flex-end; flex-grow: 1;"></div>
+        <a class="ar" href="{{url('dologout')}}">Log Out</a>
+    </div>
     <div class="product">
         <h1>Page Item</h1>
         @if ($errors->any())
@@ -69,15 +108,15 @@
         <br><br>
         <h1>List Menu</h1>
         <div class="card-body">
-            <table class="table responsive" id="tableHasil">
+            <table class="table responsive" id="table">
                 <thead class="thead-dark">
                     <tr>
-                        <th>Menu Id</th>
+                        <th>Id</th>
                         <th>Name</th>
                         <th>Kategori</th>
-                        <th>Pict</th>
                         <th>Price</th>
                         <th>Description</th>
+                        <th>Pict</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -89,10 +128,10 @@
 @endsection
 
 @section('plugins.Datatables', true)
-@section('custom_js')
+@section('adminlte_js')
 <script>
-   $(document).ready(function(){
-        console.log("test");
+   $(function(){
+        // console.log("test");
         var table = $("#table").DataTable({
             processing: true,
             serverSide: true,
@@ -100,16 +139,17 @@
                 url: "{{ url('admin/menu/lprod') }}",
             },
             'columnDefs': [ {
-                'targets': [4,5], /* column index */
+                'targets': [5,6], /* column index */
                 'orderable': false, /* true or false */
                 }],
             columns: [
-                { data: 'id', name: 'id' },
-                { data: 'name', name: 'name' },
-                { data: 'id_kategori', name: 'id_kategori' },
-                { data: 'harga', name: 'harga' },
-                { data: 'deskripsi', name: 'deskripsi' },
-                { data: 'btnDelete', name: 'btnDelete' }
+                { data: 'id', name: 'id' ,className:'hitam'},
+                { data: 'name', name: 'name', className:'hitam'},
+                { data: 'kategori', name: 'kategori' ,className:'hitam'},
+                { data: 'harga', name: 'harga', render: $.fn.dataTable.render.number( '.', ',', 2, 'Rp' ),className: "text-right hitam" },
+                { data: 'deskripsi', name: 'deskripsi', className:'hitam'},
+                { data: 'picture', name: 'picture' ,className:'hitam'},
+                { data: 'btnDelete', name: 'btnDelete' ,className:'hitam'}
             ]
         });
     });
