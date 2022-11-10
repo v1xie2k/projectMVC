@@ -1,10 +1,6 @@
 @extends('layouts.layout')
 @include('navbar')
 @section('content')
-<!-- <<<<<<< HEAD
-=======
-    {{-- {{isLogin()}}
-    {{getYangLogin()}} --}}
     @if (isLogin())
         <form action="{{url('dologout')}}" method="post">
             @csrf
@@ -16,7 +12,6 @@
     <a href="{{url('home/user/profile/'.getYangLogin()->id)}}"><button>userprofile</button></a><br>
     temporary button ke menu page
     <a href="{{url('home/menu')}}"><button>Menu</button></a>
->>>>>>> 2c6395c9bd58f979eb02c362128d37047953703b -->
 
 
 <!-- buat tulisan didepan -->
@@ -25,7 +20,7 @@
           <center>
           <div class="judul_1"> いらっしゃいませ</div>
           <div class="judul_2">Amazake</div>
-          </center>   
+          </center>
       </div>
     </div>
     <!-- end tulisan depan -->
@@ -56,14 +51,14 @@
               Amazake – where expert culinary skills and an innate appreciation of nature come together to inspire and enhance the Japanese dining experience.
 
               Since our debut in 2021, we have forged an identity of our own by combining the intricacies of sashimi with teppanyaki to offer the height of Japanese cuisine to the masses.
-              
+
               Amazake is no ordinary dining restaurant. We believe in providing an alluring ambience that sets us apart from a regular diner.
-              
+
               Illustrating the emerging influence Asia has on modern Japanese cuisine, our menu features a fusion of traditional Japanese dishes with modern innovative trends. An ever-evolving selection of appetizers, mains and sushi specials will guarantee you a truly authentic Japanese dining experience.
               <br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               We frequently release seasonal themes to entice the taste buds of our customers. Some of which highlight items according to Japan’s seasons – Summer, Fall, Winter, Spring – and specialty items from regions such as Hokkaido, Miyazaki, Kagoshima, and many more.
-              
+
               A modest homegrown , our open-kitchen concept allows patrons to appreciate the culinary skills of our restaurants’ chefs while relishing mouth-watering savouries.
             </div>
         </div>
@@ -80,7 +75,7 @@
         <div class="global_card">
             <div class="card cbg1" ></div>
             <div class="bcard" >
-                
+
                 <div class="card_text">
                     <h2>Edo Period</h2>
                     <br>
@@ -92,7 +87,7 @@
         <div class="global_card">
             <div class="card cbg2" ></div>
             <div class="bcard" >
-                
+
                 <div class="card_text">
                     <h2>Meiji Period</h2>
                     <br>
@@ -104,7 +99,7 @@
         <div class="global_card">
             <div class="card cbg3" ></div>
             <div class="bcard" >
-                
+
                 <div class="card_text">
                     <h2>Taishou Period</h2>
                     <br>
@@ -116,7 +111,7 @@
         <div class="global_card">
             <div class="card cbg4" ></div>
             <div class="bcard" >
-                
+
                 <div class="card_text">
                     <h2>Shōwa Period</h2>
                     <br>
@@ -127,7 +122,7 @@
         <div class="global_card">
             <div class="card cbg5" ></div>
             <div class="bcard" >
-                
+
                 <div class="card_text">
                     <h2>Heisei Period</h2>
                     <br>
@@ -138,7 +133,7 @@
         <div class="global_card">
             <div class="card cbg6" ></div>
             <div class="bcard" >
-                
+
                 <div class="card_text">
                     <h2>Reiwa Period</h2>
                     <br>
@@ -160,7 +155,7 @@
       We guarantee the freshness of our food and ensure that only top-grade ingredients are used.
         </p>
         <br><br>
-        <P style="font-family: myFt;">Thank you our loyal customer</P> 
+        <P style="font-family: myFt;">Thank you our loyal customer</P>
         <br><br>
     </p>
     </div>
@@ -178,14 +173,14 @@
             08:00 until 15:00 <br>
             16:00 until 23:00 <br>
         </center>
-        
+
     </div>
 
     <!-- low kanan -->
     <div class="low_right">
         <center>
             <h1>Contact Us</h1>
-        </center> 
+        </center>
             <br><br>
             <img src="Assets/ig.png" alt="">
             &nbsp;&nbsp;&nbsp;Amazake.ig <br>

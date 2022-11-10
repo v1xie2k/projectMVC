@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\KategoriMenu;
 use App\Models\Menu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
@@ -50,7 +52,40 @@ class HomePageController extends Controller
             Session::push('picts', pathinfo($val)["basename"]);
         }
         $picts = Session::get('picts');
-        // dd($picts);
         return view('client.menu.listitems',compact('category','items','picts'));
+    }
+    public function addToCart(Request $request)
+    {
+        $item = Menu::find($request->id);
+        // $cart = Cart::find(getYangLogin()->id);
+        $cart = DB::table('cart')->where('id_user', getYangLogin()->id)->where('id_menu',$request->id)->get();
+        if(count($cart) == 0){
+            //kalau item belum ada di cart maka di add
+            $data =[];
+            $data['id_menu'] = $request->id;
+            $data['id_user'] = getYangLogin()->id;
+            $data['name_menu'] = $item->name;
+            $data['price'] = $item->harga;
+            $data['quantity'] = 1;
+            $data['subtotal'] = $data['quantity'] * $data['price'];
+            if(Cart::create($data))
+            {
+                return redirect()->back()->with(['pesan'=>'success add to cart']);
+            }
+            return redirect()->back()->with(['pesan'=>'failed add to cart']);
+        }else{
+
+            $qty = $cart[0]->quantity += 1;
+            $subtotal = $cart[0]->subtotal = $cart[0]->price * $cart[0]->quantity;
+            $updateCart = DB::table('cart')->where('id_user', getYangLogin()->id)->where('id_menu',$request->id)->update(['quantity'=>$qty , 'subtotal'=>$subtotal]);
+            
+            return redirect()->back()->with(['pesan'=>'success add to cart']);
+            // dd($updateCart);
+            //error karena pake dbraw maka ga bisa pake syntax update
+            // $cart[0]->quantity += 1;
+            // $cart[0]->subtotal = $cart[0]->price * $cart[0]->quantity;
+            // // $cart->update($cart[0]);
+            // $cart->update($cart);
+        }
     }
 }

@@ -16,7 +16,12 @@
                     <h5 class="card-title">{{$val->name}}</h5>
                     <p class="card-text">Price: {{$val->harga}}</p>
                     <p class="card-text">Desc: {{$val->deskripsi}}</p>
-                    <a href="#" class="btn btn-primary">add to cart</a>
+                    @if (isLogin())
+                    <form action="{{url('home/menu/addToCart/'.$val->id)}}" method="post">
+                        @csrf
+                        <button class="btn btn-primary">Add To Cart</button>
+                    </form>
+                    @endif
                     </div>
                 </div>
                 @endforeach

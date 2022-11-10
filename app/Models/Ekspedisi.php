@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Ekspedisi extends Model
 {
     use HasFactory;
-    use SoftDeletes;
 
     // protected $connection   = "konek_buku";
     protected $table        = "ekspedisi";

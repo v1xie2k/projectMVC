@@ -17,6 +17,7 @@ return new class extends Migration
             Schema::create('htrans', function (Blueprint $table) {
                 $table->id();
                 $table->integer('id_user',11)->autoIncrement(false);
+                $table->integer('id_ekspedisi',11)->autoIncrement(false);
                 $table->integer('total',11)->autoIncrement(false);
                 $table->date('date')->default(date('Y-m-d'));
                 $table->timestamps();

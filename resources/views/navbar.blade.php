@@ -1,9 +1,21 @@
 <div class="nav">
     <img class="logo" src="{{asset("css/gallery/logo.png")}}" alt="">
     <a class="ar" href="{{url('home')}}">Home</a>
-    <a class="ar" href="#">Menu</a>
+    <a class="ar" href="{{url('home/menu')}}">Menu</a>
     <a class="ar" href="#">Cart</a>
+    @if(isLogin())
+        <a class="ar" href="{{url('home/user/profile/'.getYangLogin()->id)}}">Profile</a>
+    @endif
     <div style="display: flex; justify-content: flex-end; flex-grow: 1;"></div>
-        <a class="ar" href="{{url('login')}}">Login/Register</a>
+        @if (isLogin())
+            {{-- <form action="{{url('dologout')}}" method="post">
+                @csrf
+                <button type="submit" class="btn btn-success">Logout</button> --}}
+                <a class="ar" href="{{url('dologout')}}">Logout</a>
+            {{-- </form> --}}
+        @else
+            <a class="ar" href="{{url('login')}}">Login/Register</a>
+
+        @endif
     </div>
  </div>

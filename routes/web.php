@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\MasterController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\MasterTopupController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\CheckLogin;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,8 +38,18 @@ Route::prefix('home')->group(function () {
     Route::prefix('menu')->group(function () {
         Route::get('',[HomePageController::class,'home']);
         Route::get('{id}',[HomePageController::class,'listitems']);
+        Route::post('addToCart/{id}',[HomePageController::class,'addToCart']);
     });
-    Route::prefix('user')->group(function () {
+
+    Route::prefix('cart')->middleware([CheckLogin::class])->group(function () {
+        Route::get('',[CartController::class,'home']);
+        Route::post('increase/{id}',[CartController::class,'increaseCart']);
+        Route::post('decrease/{id}',[CartController::class,'decreaseCart']);
+        Route::post('deleteItem/{id}',[CartController::class,'deleteItem']);
+        Route::post('buy/{id}',[CartController::class,'transaction']);
+    });
+
+    Route::prefix('user')->middleware([CheckLogin::class])->group(function () {
         Route::get('profile/{id}',[UserController::class,'profile']);
         Route::get('editprofile/{id}',[UserController::class,'editprofile']);
         Route::get('editpassword/{id}',[UserController::class,'editpassword']);

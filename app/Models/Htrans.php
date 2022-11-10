@@ -20,6 +20,7 @@ class Htrans extends Model
 
     protected $fillable = [
         'id_user',
+        'id_ekspedisi',
         'total',
     ];
     public function Users(){

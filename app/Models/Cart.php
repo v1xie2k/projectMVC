@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Cart extends Model
 {
     use HasFactory;
-    use SoftDeletes;
 
     protected $table        = "cart";
     // protected $primaryKey   = "buku_id";
@@ -30,6 +29,6 @@ class Cart extends Model
         return $this->belongsTo(Users::class, 'id_user','id');
     }
     public function Menus(){
-        return $this->belongsTo(Menu::class, 'id_menu','id');
+        return $this->hasMany(Menu::class, 'id','id_menu');
     }
 }
