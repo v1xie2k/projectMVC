@@ -1,19 +1,25 @@
 @extends('layouts.layout')
 @include('navbar')
+@push('css')
+<style>
+    .login1{
+    width: 100%;
+    height: 120vh;
+    background-color: rgba(0, 0, 0, 1);
+    padding: 5vh;
+    animation: move 30s infinite ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+</style>
+
+@endpush
 @section('content')
-    @if ($errors->any())
-        <h1>Errors :</h1>
 
-        <ul>
-            @foreach ($errors->all() as $err)
-                <li>{{ $err }}</li>
-            @endforeach
-        </ul>
-    @endif
-
-    <div class="login1">
+    <div class="login1" style="height: 97vh;">
         <div class="log2 blur">
-            <h2>Registration</h2><br><br>
+            <h2>Registration</h2>
 
             <form action="{{ url('/doregister') }}" method="post">
                 @csrf
@@ -24,7 +30,7 @@
                     <input type="text" name="name" class="name" value="{{ old('name') }}"
                         aria-describedby="emailHelp" style="width: 100%;">
                     @error('name')
-                        <div class="error"> {{$message}} </div> <br>
+                        <div class="error"> {{$message}} </div>
                     @enderror
                 </div>
                 <div class="mb-3">
@@ -32,14 +38,14 @@
                     <input type="text" name="email" class="email" value="{{ old('email') }}"
                         aria-describedby="emailHelp" style="width: 100%;">
                     @error('email')
-                        <div class="error"> {{$message}} </div> <br>
+                        <div class="error"> {{$message}} </div>
                     @enderror
                 </div>
                 <div class="mb-3">
                     <label>Password: </label><br>
                     <input type="password" name="password" class="password" style="width: 100%;">
                     @error('password')
-                        <div class="error"> {{$message}} </div> <br>
+                        <div class="error"> {{$message}} </div>
                     @enderror
                 </div>
                 <div class="mb-3">
@@ -51,21 +57,14 @@
                     <input type="text" name="alamat" class="alamat" value="{{ old('alamat') }}"
                         aria-describedby="emailHelp" style="width: 100%;">
                     @error('alamat')
-                        <div class="error"> {{$message}} </div> <br>
+                        <div class="error"> {{$message}} </div>
                     @enderror
                 </div>
                 <button type="submit" class="btn btn-success">Register</button>
             </form>
 
             Already have account ? <a href="{{ url('login') }}">Login Here</a>
-            @if (Session::has('pesan'))
-                @php($pesan = Session::get('pesan'))
-                @if ($pesan['tipe'] == 0)
-                    <div class="alert alert-danger">{{ $pesan['isi'] }}</div>
-                @else
-                    <div class="alert alert-success">{{ $pesan['isi'] }}</div>
-                @endif
-            @endif
+            <br>
 
 
         </div>

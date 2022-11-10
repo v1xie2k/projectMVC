@@ -1,0 +1,5 @@
+1. Install adminlte karena yajrabox datatable perlu banyak bootstrap dan jquery yang dipake 
+2. Baca dokumentasi yajrabox datatable untuk general support
+3. install yajrabox yang v9
+4. composer require yajra/laravel-datatables:^9.0
+

@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="{{ asset('css/mycss.css') }}" media="screen">
     {{-- <link rel="stylesheet" href="{{ asset('css/mycssadmin.css') }}" media="screen"> --}}
     <link rel="stylesheet" href="{{ asset('css/index.css') }}" media="screen">
-    <link href="index.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <div>

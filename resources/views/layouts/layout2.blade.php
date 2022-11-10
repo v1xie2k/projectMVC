@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/mycssadmin.css') }}" media="screen">
 
     @yield('js')
+    @stack('css')
 
 </head>
 <body>
