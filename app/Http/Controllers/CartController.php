@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\InvoiceMail;
 use App\Models\Cart;
 use App\Models\Dtrans;
 use App\Models\Ekspedisi;
@@ -9,6 +10,7 @@ use App\Models\Htrans;
 use App\Models\Menu;
 use App\Models\Users;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
@@ -91,6 +93,10 @@ class CartController extends Controller
                 }
                 $saldo = getYangLogin()->saldo - $data['total'];
                 Users::find(getYangLogin()->id)->update(['saldo'=>$saldo]);
+                $items = Dtrans::where('id_htrans',$htrans->id)->get();
+                $user = getYangLogin();
+                // return new InvoiceMail($items, $htrans->created_at);
+                Mail::to(getYangLogin()->email)->send(new InvoiceMail($items, $htrans->created_at));
                 return redirect()->back()->with(['msg'=>'Transaction Success ']);
             }
         }
