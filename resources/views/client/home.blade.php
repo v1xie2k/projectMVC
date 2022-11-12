@@ -150,7 +150,7 @@
   <div class="container_low" id="low">
     <!-- low kiri  -->
     <div class="low_left">
-    <img class="logo" src="Assets/logo2.png" alt="" style="width:400px; height:100px;" >
+    <img class="logo" src="{{ asset('css/Assets/logo2.png') }}" alt="" style="width:400px; height:100px;" >
     <p class="buat_text"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Amazake is a restaurant that serves halal Japanese cuisine and has a taste that suits Indonesian tastes.To be the leading restaurant for quality, value and exceptional service in  all of our outlets worldwide.We are committed to serving good food at affordable prices to our customers.
       We guarantee the freshness of our food and ensure that only top-grade ingredients are used.
         </p>
@@ -182,11 +182,11 @@
             <h1>Contact Us</h1>
         </center>
             <br><br>
-            <img src="Assets/ig.png" alt="">
+            <img src="{{ asset('css/Assets/ig.png') }}" alt="">
             &nbsp;&nbsp;&nbsp;Amazake.ig <br>
-            <img src="Assets/TW.png" alt="">
+            <img src="{{ asset('css/Assets/TW.png') }}" alt="">
             &nbsp;&nbsp;&nbsp;Amazake.twt <br>
-            <img src="Assets/fb.png" alt="">
+            <img src="{{ asset('css/Assets/fb.png') }}" alt="">
             &nbsp;&nbsp;&nbsp;Amazake Indonesia <br><br>
             <hr><br>
             <center>
