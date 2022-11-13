@@ -70,11 +70,12 @@ class CartController extends Controller
             $totalPrice += $val->subtotal;
         }
         $ekspedisi = Ekspedisi::find($request->id_ekspedisi);
+        $totalPrice += $ekspedisi->ongkir;
         if(count($carts) != 0)
         {
             if($saldo < $totalPrice)
             {
-                return redirect()->back()->with(['msg'=>'Not enough balance']);
+                return redirect()->back()->with(['msg'=>['isi'=>'Not Enough Balance','type'=>0]]);
             }else{
                 $data = $request->all();
                 $data['total'] += $ekspedisi->ongkir;
@@ -96,12 +97,12 @@ class CartController extends Controller
                 $items = Dtrans::where('id_htrans',$htrans->id)->get();
                 $user = getYangLogin();
                 // return new InvoiceMail($items, $htrans->created_at);
-                Mail::to(getYangLogin()->email)->send(new InvoiceMail($items, $htrans->created_at));
-                return redirect()->back()->with(['msg'=>'Transaction Success ']);
+                // Mail::to(getYangLogin()->email)->send(new InvoiceMail($items, $htrans->created_at));
+                // return redirect()->back()->with(['msg'=>['isi'=>'Transaction Success','type'=>1]]);
             }
         }
         else{
-            return redirect()->back()->with(['msg'=>'you dont have any items to checkout']);
+            // return redirect()->back()->with(['msg'=>['isi'=>'You dont have any items to checkout','type'=>0]]);
         }
     }
 }

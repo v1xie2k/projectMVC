@@ -56,4 +56,12 @@
         <input type="hidden" name="total" value="{{$total}}">
         <input type="hidden" name="quantity" value="{{$qty}}">
     </form>
+    @if (Session::has('msg'))
+    @php($msg = Session::get('msg'))
+    @if ($msg['type'] == 0)
+        <div class="alert alert-danger">{{ $msg['isi'] }}</div>
+    @else
+        <div class="alert alert-success">{{ $msg['isi'] }}</div>
+    @endif
+@endif
 @endsection
