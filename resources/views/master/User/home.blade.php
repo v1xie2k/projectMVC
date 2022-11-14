@@ -39,7 +39,7 @@
             <table class="table responsive table-dark" id="tableHasil">
                 <thead class="thead-dark">
                     <tr>
-                        <th>No</th>
+                        <th>ID User</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Alamat</th>
@@ -48,9 +48,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($users as $user =>$idx)
+                    @foreach ($users as $user)
                         <tr>
-                            <td>{{$idx}}</td>
+                            <td>{{$user->id}}</td>
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
                             <td>{{$user->alamat}}</td>
