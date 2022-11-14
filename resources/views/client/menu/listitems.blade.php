@@ -4,7 +4,7 @@
         <div class="d-flex flex-wrap filter w-25 h-50 card p-3 ms-5"> --}}
             Temporary menu list <br>
             <h1>List item category {{$category->name}}</h1><br>
-            <div class=""d-flex flex-wrap gap-3">
+            <div class="d-flex flex-wrap gap-3">
                 @foreach ($items as $val)
                 <div class="" style="width: 18rem;">
                     @foreach ($picts as $pict )
