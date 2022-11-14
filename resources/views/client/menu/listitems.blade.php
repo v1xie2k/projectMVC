@@ -7,11 +7,11 @@
             <div class="d-flex flex-wrap gap-3">
                 @foreach ($items as $val)
                 <div class="" style="width: 18rem;">
-                    @foreach ($picts as $pict )
+                    {{-- @foreach ($picts as $pict )
                         @if (explode('.',$pict)[0]== $val->id)
                         <img src="{{asset('storage/items/'.$pict)}}" class="card-img-top" alt="...">
                         @endif
-                    @endforeach
+                    @endforeach --}}
                     <div class="card-body">
                     <h5 class="card-title">{{$val->name}}</h5>
                     <p class="card-text">Price: {{$val->harga}}</p>

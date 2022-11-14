@@ -22,6 +22,7 @@ class HomePageController extends Controller
             Session::push('categoriesPicts', pathinfo($val)["basename"]);
         }
         $picts = Session::get('categoriesPicts');
+        dd($pict);
         return view('client.menu.listcategory',compact('categories','picts'));
     }
     public function listitems(Request $request)
@@ -78,7 +79,7 @@ class HomePageController extends Controller
             $qty = $cart[0]->quantity += 1;
             $subtotal = $cart[0]->subtotal = $cart[0]->price * $cart[0]->quantity;
             $updateCart = DB::table('cart')->where('id_user', getYangLogin()->id)->where('id_menu',$request->id)->update(['quantity'=>$qty , 'subtotal'=>$subtotal]);
-            
+
             return redirect()->back()->with(['pesan'=>'success add to cart']);
             // dd($updateCart);
             //error karena pake dbraw maka ga bisa pake syntax update

@@ -1,5 +1,6 @@
 @extends('layouts.layout')
 @section('content')
+@include('navbar2')
     <a href="{{url('admin/menu')}}"><button type="submit" class="btn btn-success">Back</button></a>
     <h1>Detail Item</h1>
     @if($errors -> any())

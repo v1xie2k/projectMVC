@@ -8,6 +8,7 @@ use App\Http\Controllers\MasterUserController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\MasterTopupController;
+use App\Http\Controllers\transactionController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\CheckLogin;
 use Illuminate\Support\Facades\Route;
@@ -75,6 +76,14 @@ Route::prefix('admin')->middleware(['CheckRole:admin'])->group(function () {
         Route::get('details/{id}',[MenuController::class,'detail']);
         Route::get('lprod',[MenuController::class,'lprod']);
     });
+
+    Route::prefix('transaction')->group(function () {
+        Route::get('',[transactionController::class,'home']);
+        Route::get('ltrans',[transactionController::class,'ltrans']);
+        Route::get('details/{id}',[transactionController::class,'detail']);
+
+    });
+
     Route::prefix('category')->group(function () {
         Route::get('',[CategoryController::class,'home']);
         Route::post('docreate',[CategoryController::class,'docreate']);

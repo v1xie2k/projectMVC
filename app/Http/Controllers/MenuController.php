@@ -18,33 +18,6 @@ class MenuController extends Controller
         return view('master.Items.home',compact('categories'));
     }
 
-    public function test(Request $request)
-    {
-        return view('test');
-    }
-
-    public function load()
-    {
-        $menus = Menu::get();
-        return DataTables::of($menus)
-            ->addColumn('kategori', function ($data) {
-                $load = KategoriMenu::where('id', $data->id_kategori)->pluck('name');
-                $hasil = str_replace(array('"','[',']' ), '', $load);
-                // return $hasil;
-                return "<p>$hasil</p>";
-            })
-            ->addColumn('btnDelete', function ($data) {
-                return "<a href='#' class='btn btn-danger' onclick='return confirm(`Are you sure you want to delete $data->customer_nama and their PICs ?`);'>Delete</a>";
-            })
-            ->addColumn('btnDetail', function ($data) {
-                return "<a class='btn btn-warning detail' option='$data->customer_id'>Detail</a>";
-            })
-
-            ->rawColumns(['btnDelete', 'kategori', 'btnDetail'])
-            ->make(true);
-    }
-
-
     public function docreate(Request $request)
     {
         $validated = $request->validate([
