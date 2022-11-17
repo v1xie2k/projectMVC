@@ -1,7 +1,12 @@
 <div class="nav">
     <img class="logo" src="{{asset("css/gallery/logo.png")}}" alt="">
     <a class="ar" href="{{url('home')}}">Home</a>
-    <a class="ar" href="{{url('home/menu')}}">Menu</a>
+    @if (isLogin())
+        <a class="ar" href="{{url('home/menu')}}">Menu</a>
+        @else
+        <a class="ar" href="{{url('menu')}}">Menu</a>
+        @endif
+
     <a class="ar" href="#">Cart</a>
     @if(isLogin())
         <a class="ar" href="{{url('home/user/profile')}}">Profile</a>

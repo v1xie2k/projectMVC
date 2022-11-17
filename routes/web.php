@@ -30,8 +30,7 @@ Route::get('/register', [SiteController::class,'register']);
 Route::post('/doregister', [SiteController::class,'doregister']);
 Route::post('/dologout', [SiteController::class,'dologout']);
 Route::get('/dologout', [SiteController::class,'dologout']);
-Route::get('/test', [MenuController::class,'test']);
-Route::get('/load', [MenuController::class,'load']);
+Route::get('/menu', [SiteController::class,'menu']);
 
 Route::prefix('home')->group(function () {
     Route::get('/', [SiteController::class,'home']);
