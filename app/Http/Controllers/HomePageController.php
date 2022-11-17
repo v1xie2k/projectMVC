@@ -17,12 +17,13 @@ class HomePageController extends Controller
         Session::forget('categoriesPicts');
         $categories = KategoriMenu::all();
         $pict = Storage::disk('public')->files("categories");
+
         foreach($pict as $val)
         {
             Session::push('categoriesPicts', pathinfo($val)["basename"]);
         }
         $picts = Session::get('categoriesPicts');
-        dd($pict);
+        // dd($picts);
         return view('client.menu.listcategory',compact('categories','picts'));
     }
     public function listitems(Request $request)

@@ -52,7 +52,7 @@ class SiteController extends Controller
         $data = $request->all();
         $data["password"] = Hash::make($request->password);
         if (Users::create($data)) {
-            return redirect('register')->with(
+            return redirect('login')->with(
                 ['pesan' => ['tipe' => 1, 'isi' => 'Berhasil Register']]
             );
         } else {
