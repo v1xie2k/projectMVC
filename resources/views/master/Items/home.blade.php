@@ -72,14 +72,14 @@
             </div>
 
             <div class="mb-3">
-                <label class="form-label">harga</label>
+                <label class="form-label">Price</label>
                 <input type="number" name="harga" class="form-control" min:1 value="{{ old('harga') }}">
                 @error('harga')
                     <div class="error"> {{$message}} </div> <br>
                 @enderror
             </div>
             <div class="mb-3">
-                <label class="form-label">Deskripsi</label>
+                <label class="form-label">Description</label>
                 <input type="text" name="deskripsi" class="form-control" value="{{ old('deskripsi') }}"
                     aria-describedby="emailHelp">
                 @error('deskripsi')
@@ -87,7 +87,7 @@
                 @enderror
             </div>
             <button type="submit" class="btn btn-success">Add</button>
-        </form>
+        </form><br>
         @if (Session::has('pesan'))
             @php($pesan = Session::get('pesan'))
             @if ($pesan['tipe'] == 0)

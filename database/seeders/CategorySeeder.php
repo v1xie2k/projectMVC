@@ -19,11 +19,11 @@ class CategorySeeder extends Seeder
         DB::table("kategori_menu")->truncate();
         DB::statement("SET FOREIGN_KEY_CHECKS=1");
         DB::table("kategori_menu")->insert([
+            ["name" => "Sushi"],
             ["name" => "Noodles"],
+            ["name" => "Rice"],
             ["name" => "Beverages"],
             ["name" => "Dessert"],
-            ["name" => "Sushi"],
-            ["name" => "Rice"],
 
         ]);
     }

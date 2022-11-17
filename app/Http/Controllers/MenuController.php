@@ -18,6 +18,15 @@ class MenuController extends Controller
         return view('master.Items.home',compact('categories'));
     }
 
+    public function edit(Request $request)
+    {
+        $id = $request->id;
+        $item = Menu::where('id',$id)->get();
+        $categories = KategoriMenu::get();
+        $item = $item[0];
+        return view('master.Items.edit',compact('item','categories'));
+    }
+
     public function docreate(Request $request)
     {
         $validated = $request->validate([
@@ -66,13 +75,13 @@ class MenuController extends Controller
         }
         if($menu){
             if($menu->update($data)){
-                return redirect()->back()->with('pesan',['tipe'=>1, 'isi'=> 'Berhasil update']);
+                return redirect("admin/menu")->with('pesan',['tipe'=>1, 'isi'=> 'Berhasil update']);
             }
             else{
-                return redirect()->back()->with('pesan',['tipe'=>0, 'isi'=> 'Gagal update']);
+                return redirect("admin/menu")->with('pesan',['tipe'=>0, 'isi'=> 'Gagal update']);
             }
         }else{
-            return redirect()->back()->with('pesan',['tipe'=>0, 'isi'=> 'Gagal update data tidak ditemukan']);
+            return redirect("admin/menu")->with('pesan',['tipe'=>0, 'isi'=> 'Gagal update data tidak ditemukan']);
         }
     }
     public function delete(Request $request)
@@ -103,10 +112,10 @@ class MenuController extends Controller
                 return "<p>$hasil</p>";
             })
             ->addColumn('btnDelete', function ($data) {
-                return "<a href='#' class='btn btn-danger' onclick='return confirm(`Are you sure you want to delete $data->customer_nama and their PICs ?`);'>Delete</a>";
+                return "<a href='" . url("admin/menu/edit/$data->id") . "' class='btn btn-warning' onclick='return confirm(`Are you sure you want to edit $data->name ?`);'>Edit</a><br><br><a href='" . url("admin/menu/delete/$data->id") . "' class='btn btn-danger' onclick='return confirm(`Are you sure you want to delete $data->name ?`);'>Delete</a>";
             })
             ->addColumn('picture', function ($data) {
-                return "<img src='{{asset(`css/gallery/mochi.png`)}}' height=\"50\"/>";
+                return "<img src='" . asset("storage/items/$data->id.jpg") . "' class='card-img-top' alt='...' style='height:150px;width:150px;'>";
             })
 
             ->rawColumns(['btnDelete', 'kategori', 'picture'])
