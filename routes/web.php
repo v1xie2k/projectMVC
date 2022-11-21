@@ -4,6 +4,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\MasterController;
+use App\Http\Controllers\MasterReportController;
 use App\Http\Controllers\MasterUserController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\SiteController;
@@ -102,5 +103,9 @@ Route::prefix('admin')->middleware(['CheckRole:admin'])->group(function () {
     Route::prefix('topup')->group(function () {
         Route::get('',[MasterTopupController::class,'home']);
         Route::get('history',[MasterTopupController::class,'home2']);
+    });
+    Route::prefix('report')->group(function () {
+        Route::get('',[MasterReportController::class,'home']);
+        Route::post('filterDate',[MasterReportController::class,'filterDate']);
     });
 });
