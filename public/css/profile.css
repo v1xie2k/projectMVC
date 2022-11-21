@@ -35,14 +35,6 @@
     margin-right: auto;
 }
 
-
-.bgSushi{
-  background-image: url(gallery/bgsushi2.jpg);
-  background-blend-mode:overlay;
-  background-size:100%, 100%;
-  background-repeat:repeat-y;
-}
-
 .path{
   height: 1px;
   width: 100%;
@@ -82,7 +74,7 @@
 /* mulai dari sini */
 .font_profile{
     font-family: myFirstFont;
-  } 
+  }
 
 .container_profile{
     width: 100%;
@@ -260,7 +252,7 @@ height:20px;
     flex-direction: row;
     justify-content: flex-end;
   }
-  
+
 .container_logout form{
 width: 80px;
 display: inline-flex;
@@ -270,5 +262,5 @@ justify-content: center;
 }
 
 .blur {
-  backdrop-filter: blur(5px);  
+  backdrop-filter: blur(5px);
 }

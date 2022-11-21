@@ -33,19 +33,7 @@ class HomePageController extends Controller
         $category = KategoriMenu::find($request->id);
         $items = Menu::where('id_kategori',$request->id)->orderBy('name','asc')->get();
         $pict = Storage::disk('public')->files("items");
-        // for ($i=0; $i < count($pict); $i++) {
 
-        //     $pict = pathinfo($pict[$i])["basename"];
-
-        // }
-        // foreach($pict as $val)
-        // {
-        //     $data = [];
-        //     $data['filename'] = pathinfo($val)["basename"];
-        //     $data['name'] = explode('.',pathinfo($val)["basename"])[0];
-        //     $data['ext'] = '.'.explode('.',pathinfo($val)["basename"])[1];
-        //     Session::push('picts', $data);
-        // }
         foreach($pict as $val)
         {
             $data = [];
@@ -73,16 +61,15 @@ class HomePageController extends Controller
             $data['subtotal'] = $data['quantity'] * $data['price'];
             if(Cart::create($data))
             {
-                return redirect()->back()->with(['pesan'=>'success add to cart']);
+                return redirect('home/menu')->with(['pesan' => ['tipe' => 1, 'isi' => 'Success add to cart']]);
             }
-            return redirect()->back()->with(['pesan'=>'failed add to cart']);
+            return redirect('home/menu')->with(['pesan' => ['tipe' => 0, 'isi' => 'Failed add to cart']]);
         }else{
-
             $qty = $cart[0]->quantity += 1;
             $subtotal = $cart[0]->subtotal = $cart[0]->price * $cart[0]->quantity;
             $updateCart = DB::table('cart')->where('id_user', getYangLogin()->id)->where('id_menu',$request->id)->update(['quantity'=>$qty , 'subtotal'=>$subtotal]);
-
-            return redirect()->back()->with(['pesan'=>'success add to cart']);
+            dd(Session::get('cart'));
+            return redirect('home/menu')->with(['pesan' => ['tipe' => 1, 'isi' => 'Success add to cart']]);
             // dd($updateCart);
             //error karena pake dbraw maka ga bisa pake syntax update
             // $cart[0]->quantity += 1;

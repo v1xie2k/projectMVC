@@ -16,5 +16,8 @@
     <div>
         @yield('content')
     </div>
+    <div class="foot">
+        <p class="copy">Copyright 2022 © Amazake</p>
+    </div>
 </body>
 </html>

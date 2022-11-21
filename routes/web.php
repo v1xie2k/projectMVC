@@ -38,7 +38,7 @@ Route::prefix('home')->group(function () {
     Route::prefix('menu')->group(function () {
         Route::get('',[HomePageController::class,'home']);
         Route::get('{id}',[HomePageController::class,'listitems']);
-        Route::post('addToCart/{id}',[HomePageController::class,'addToCart']);
+        Route::get('addToCart/{id}',[HomePageController::class,'addToCart']);
     });
 
     Route::prefix('cart')->middleware([CheckLogin::class])->group(function () {

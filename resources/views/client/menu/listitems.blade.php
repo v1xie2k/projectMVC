@@ -1,31 +1,35 @@
 @extends('layouts.layout')
 @section('content')
-    {{-- <div class="d-flex p-1 w-100 mt-5 ">
-        <div class="d-flex flex-wrap filter w-25 h-50 card p-3 ms-5"> --}}
-            Temporary menu list <br>
-            <h1>List item category {{$category->name}}</h1><br>
-            <div class="d-flex flex-wrap gap-3">
-                @foreach ($items as $val)
-                <div class="" style="width: 18rem;">
-                    {{-- @foreach ($picts as $pict )
-                        @if (explode('.',$pict)[0]== $val->id)
-                        <img src="{{asset('storage/items/'.$pict)}}" class="card-img-top" alt="...">
+@include('navbar')
+<div class="bgSushi">
+    <br><br><br>
+    <center>
+        <div class="htop color">
+            <p>{{ $category->name }}</p>
+        </div>
+        <div class="path2"></div>
+        <br>
+    </center>
+
+    <br>
+    <div class="tempMenu with-border-image bg">
+        @foreach ($items as $val)
+            <div class="menue">
+                <img src="{{ asset('storage/items/' . $val->id . '.jpg') }}" class="card-img-top" alt="..." style="width: 250px;height:200px;">
+                <div class="mdown">
+                    <div class="mdleft">
+                        <div class="mname title99">{{ $val->name }}</div>
+                        <div class="mdes">{{ $val->deskripsi }}</div>
+                        <div class="harga">{{  "Rp " . number_format($val->harga, 2, ",", ".")}}</div>
+                        @if (isLogin())
+                            <a href="{{ url('home/menu/addToCart/' . $val->id) }}" class="harga">Add To Cart</a><br>
                         @endif
-                    @endforeach --}}
-                    <div class="card-body">
-                    <h5 class="card-title">{{$val->name}}</h5>
-                    <p class="card-text">Price: {{$val->harga}}</p>
-                    <p class="card-text">Desc: {{$val->deskripsi}}</p>
-                    @if (isLogin())
-                    <form action="{{url('home/menu/addToCart/'.$val->id)}}" method="post">
-                        @csrf
-                        <button class="btn btn-primary">Add To Cart</button>
-                    </form>
-                    @endif
                     </div>
+
                 </div>
-                @endforeach
             </div>
-        {{-- </div>
-    </div> --}}
+        @endforeach
+    </div>
+</div>
+
 @endsection

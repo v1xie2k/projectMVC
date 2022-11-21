@@ -34,6 +34,15 @@
                     </a>
                 @endforeach
             </div>
+
+            @if (Session::has('pesan'))
+            @php($pesan = Session::get('pesan'))
+            @if ($pesan['tipe'] == 0)
+                <div class="alert alert-danger">{{ $pesan['isi'] }}</div>
+            @else
+                <div class="alert alert-success">{{ $pesan['isi'] }}</div>
+            @endif
+        @endif
         </center>
     </div>
 @endsection

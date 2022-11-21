@@ -134,10 +134,14 @@ form{
 
 
 .bgSushi{
-  background-image: url(gallery/bgsushi2.jpg);
+  background-image: url(./gallery/bgsushi2.jpg);
+  width: 100%;
+    height: 94vh;
   background-blend-mode:overlay;
   background-size:100%, 100%;
   background-repeat:repeat-y;
+  padding: 13vh;
+    padding-top: 15vh;
 }
 
 .path{
@@ -511,33 +515,6 @@ form{
     animation-fill-mode: both;
 }
 
-.ramen{
-  background-image: url(./gallery/BgRamen.jpg);
-  background-position: center;
-  background-repeat:repeat-y;
-  background-size: auto;
-}
-.rice{
-  background-image: url(./gallery/BgRice.jpg);
-  background-position: center;
-  background-repeat:repeat-y;
-  background-size: auto;
-}
-
-.drink{
-  background-image: url(./gallery/BgDrink.jpg);
-  background-position: center;
-  background-repeat:repeat-y;
-  background-size: auto;
-}
-
-.dessert{
-  background-image: url(./gallery/BgDessert.jpg);
-  background-position: center;
-  background-repeat:repeat-y;
-  background-size: auto;
-}
-
 
 .with-border-image {
   border-style: solid;
@@ -592,17 +569,12 @@ form{
 }
 
 .mdown{
-    width: 250px;
-    height: 100px;
+    width: 385px;
+    height: auto;
     display:flex;
     align-items: stretch;
 }
-.mdleft{
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    width: 65%;
-}
+
 .mname{
     background-color: rgba(36, 36, 36, 0.431);
     height: 35%;
@@ -616,12 +588,6 @@ form{
     padding: 0.5vh;
 }
 
-.mdright{
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    width: 35%;
-}
 
 .harga{
     background-color: rgba(36, 36, 36, 0.431);
