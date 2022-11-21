@@ -106,10 +106,10 @@ class MenuController extends Controller
         // dd($menus);
         return DataTables::of($menus)
             ->addColumn('kategori', function ($data) {
-                $load = KategoriMenu::where('id', $data->id_kategori)->pluck('name');
-                $hasil = str_replace(array('"','[',']' ), '', $load);
+                $load = KategoriMenu::where('id', $data->id_kategori)->pluck('name')->first();
+                // $hasil = str_replace(array('"','[',']' ), '', $load);
                 // return $hasil;
-                return "<p>$hasil</p>";
+                return "<p>$load</p>";
             })
             ->addColumn('btnDelete', function ($data) {
                 return "<a href='" . url("admin/menu/edit/$data->id") . "' class='btn btn-warning' onclick='return confirm(`Are you sure you want to edit $data->name ?`);'>Edit</a><br><br><a href='" . url("admin/menu/delete/$data->id") . "' class='btn btn-danger' onclick='return confirm(`Are you sure you want to delete $data->name ?`);'>Delete</a>";

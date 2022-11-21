@@ -4,11 +4,12 @@
     @if (isLogin())
         <a class="ar" href="{{url('home/menu')}}">Menu</a>
         @else
-        <a class="ar" href="{{url('menu')}}">Menu</a>
+        <a class="ar" href="{{url('home/menu')}}">Menu</a>
         @endif
 
-    <a class="ar" href="#">Cart</a>
+
     @if(isLogin())
+        <a class="ar" href="#">Cart</a>
         <a class="ar" href="{{url('home/user/profile')}}">Profile</a>
     @endif
     <div style="display: flex; justify-content: flex-end; flex-grow: 1;"></div>

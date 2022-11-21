@@ -11,7 +11,9 @@ class MasterUserController extends Controller
     public function home(Request $request)
     {
         $users = User::where('name','not like', 'admin%')->orderBy('name','asc')->get();
-        return view('master.user.home',compact('users'));
+        if(isLogin())return view('master.User.home',compact('users'));
+        abort(403);
+        // return view('master.user.home',compact('users'));
     }
 
     public function reset(Request $request)
@@ -28,7 +30,7 @@ class MasterUserController extends Controller
     public function delete(Request $request)
     {
         $users = User::find($request->id);
-       
+
         if($users->delete()){
             return redirect('admin/user')->with('pesan',['tipe'=>1, 'isi'=> 'Berhasil Hapus User']);
         }else{
@@ -53,8 +55,8 @@ class MasterUserController extends Controller
             $users = User::where('name','not like', 'admin%')->where('name','like','%'.$type.'%')->orderBy('name','desc')->get();
             return view('master.user.home',compact('users'));
         }
-        
+
     }
 
-    
+
 }

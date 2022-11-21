@@ -28,7 +28,7 @@ class SiteController extends Controller
         if (Auth::guard('web')->attempt($credential)) {
             $cekRole = Auth::guard('web')->user()->role;
             if($cekRole == "admin"){
-                return redirect('admin');
+                return redirect('admin/user');
             }else{
                 return redirect('home');
             }
