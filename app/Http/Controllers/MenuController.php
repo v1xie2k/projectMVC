@@ -31,7 +31,7 @@ class MenuController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required',
-            'photo' => 'required|mimes:png,jpg,jpeg,webp|max:10000',
+            'photo' => 'required|mimes:jpg|max:10000',
             'deskripsi' => 'required',
             'harga' => 'required|numeric'
         ]);
@@ -63,12 +63,13 @@ class MenuController extends Controller
         $menu = Menu::find($request->id);
         $validated = $request->validate([
             'name' => 'required',
-            'photo' => 'mimes:png,jpg,jpeg,webp|max:10000',
+            'photo' => 'mimes:jpg|max:10000',
             'deskripsi' => 'required',
             'harga' => 'required|numeric'
         ]);
         $data = $request->all();
         if($request->photo != null){
+            // dd($request->pict);
             Storage::disk('public')->delete('items/'.$request->pict);
             $namaFile = $request->id.".".$request->file("photo")->getClientOriginalExtension();
             $path = $request->file("photo")->storeAs("items", $namaFile, "public");

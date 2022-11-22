@@ -43,7 +43,7 @@ class UserController extends Controller
         $user = Users::find($request->id);
         $validated = $request->validate([
             'name' => 'required|min:4|max:25',
-            'photos' => 'mimes:png,jpg,jpeg,webp|max:10000',
+            'photos' => 'mimes:jpg,webp|max:10000',
             'alamat' => 'required'
         ]);
         $data = $request->all();
