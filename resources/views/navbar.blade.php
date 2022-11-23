@@ -9,7 +9,7 @@
 
 
     @if(isLogin())
-        <a class="ar" href="#">Cart</a>
+        <a class="ar" href="{{url('home/cart')}}">Cart</a>
         <a class="ar" href="{{url('home/user/profile')}}">Profile</a>
     @endif
     <div style="display: flex; justify-content: flex-end; flex-grow: 1;"></div>
