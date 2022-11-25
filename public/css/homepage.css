@@ -355,7 +355,7 @@ background-position-y:-10px ;
 
 .container_low{
   width: 100%;
-  height: 50vh;
+  height: 60vh;
   min-width: 800px;
   padding-top: 7vh;
   background-image: linear-gradient(rgb(218, 186, 156), rgb(65, 45, 15));
