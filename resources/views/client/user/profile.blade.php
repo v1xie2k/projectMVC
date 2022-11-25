@@ -1,51 +1,32 @@
 @extends('layouts.layout')
 @include('navbar')
 @section('content')
-    <!-- <div class="mb-3">
-        Name: {{ getYangLogin()->name}}
-    </div>
-    <div class="mb-3">
-        Email: {{ getYangLogin()->email}}
-    </div>
-    <div class="mb-3">
-        alamat: {{ getYangLogin()->alamat}}
-    </div>
-    <div class="mb-3">
-        saldo: {{ getYangLogin()->saldo}}
-    </div>
-    <a href="{{url('home/user/editprofile/'.getYangLogin()->id)}}"><button>editprofile</button></a>
-    <a href="{{url('home/user/editpassword/'.getYangLogin()->id)}}"><button>editpassword</button></a>
-    <a href="{{url('home/user/history/trans')}}"><button>history trans</button></a>
-    <br><br>
-    <label  class="form-label">user Pict</label>
-    <div class="card" style="width: 18rem;">
-        @if ($picture)
-
-        <img src="{{asset('storage/users/'.$picture)}}" class="card-img-top" alt="...">
-        @endif
-    </div> -->
-
 <!-- awal profile -->
 <div class="container_profile">
     <div class ="back_profile">
         <!-- atur profile kiri -->
         <div class="profile_left">
             <div class="picture_profile">
+                @if ($picture)
+
+                <img src="{{asset('storage/users/'.$picture)}}" class="card-img-top" alt="...">
+                @endif
                 <div class="profile"></div>    
                 <center>
                     <br>
-                    <div class="nama_profile">(nama)</div>
+                    <div class="nama_profile">Hello, {{ getYangLogin()->name}}</div>
                 </center>
             </div>
 
             <div class="data_user">
                 <!-- data user -->
-                <h1>Name<span class="data_user_nama">: (nama)</span></h1><br>
-                <h1>Email<span class="data_user_email">: (email)</span></h1><br>
-                <h1>Address<span class="data_user_alamat">: (alamat) </span></h1><br>
+                <h1>Name<span class="data_user_nama">: {{ getYangLogin()->name}}</span></h1><br>
+                <h1>Email<span class="data_user_email">: {{ getYangLogin()->email}}</span></h1><br>
+                <h1>Address<span class="data_user_alamat">: {{ getYangLogin()->alamat}}</span></h1><br>
                 <form action="#" method="get">
                     <input type="hidden" name="edit" value="(email)">
-                    <button class="tombol_edit_user">Edit User</button>
+                    <a href="{{url('home/user/editprofile/'.getYangLogin()->id)}}"><button class="tombol_edit_user">Edit Profile</button></a><br>
+                    <a href="{{url('home/user/editpassword/'.getYangLogin()->id)}}"><button class="tombol_edit_user">Edit Password</button></a>
                 </form>
             </div>
         </div>
@@ -53,7 +34,7 @@
 
         <!-- atur profile kanan -->
         <div class="profile_kanan">
-            <h2 style="color: #ffffff;">Your Balance is (balance)</h2><br>
+            <h2 style="color: #ffffff;">Your Balance is : {{ getYangLogin()->saldo}}</h2><br>
             <div class="top_up">
                 <h4>Masukan jumlah topup</h4>
                     <br>
@@ -105,9 +86,5 @@
         <!-- end profile kanan -->
     </div>
 </div>
-<!-- end profile -->
-    <div class="foot">
-        <p class="copy">Copyright 2022 © Amazake</p>
-    </div>
 </div>
 @endsection
