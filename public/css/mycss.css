@@ -586,11 +586,13 @@ form{
     height: 35%;
     padding: 0.5vh;
     font-size: 23px;
+    width: 250px;
     font-weight: bold;
 }
 .mdes{
     background-color: rgba(36, 36, 36, 0.431);
     height: 65%;
+    width: 250px;
     padding: 0.5vh;
 }
 
@@ -598,6 +600,7 @@ form{
 .harga{
     background-color: rgba(36, 36, 36, 0.431);
     height: 60%;
+    width: 250px;
     padding: 0.5vh;
 }
 .addcart{

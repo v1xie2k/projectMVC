@@ -11,11 +11,7 @@
 
                 <img src="{{asset('storage/users/'.$picture)}}" class="card-img-top" alt="...">
                 @endif
-                <div class="profile"></div>    
-                <center>
-                    <br>
-                    <div class="nama_profile">Hello, {{ getYangLogin()->name}}</div>
-                </center>
+                <div class="profile"></div> 
             </div>
 
             <div class="data_user">
@@ -51,7 +47,7 @@
                 <br>
                 <form action="#" method="get">
                     <input type="hidden" name="detail" value="(email)">
-                    <button  class="tombol_history">History Top Up</button>
+                    <a href="{{url('home/user/history/trans')}}"><button class="tombol_history">History Top Up</button></a>
                 </form>
             </div>
             

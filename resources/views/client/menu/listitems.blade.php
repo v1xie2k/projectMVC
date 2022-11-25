@@ -17,15 +17,14 @@
             <div class="menue">
                 <img src="{{ asset('storage/items/' . $val->id . '.jpg') }}" class="card-img-top" alt="..." style="width: 250px;height:200px;">
                 <div class="mdown">
-                    <div style="width: 100%;height: 80px;">
-                        <div class="mname title99">{{ $val->name }}</div>
-                        <div class="mdes">{{ $val->deskripsi }}</div>
-                        <div class="harga">{{  "Rp " . number_format($val->harga, 2, ",", ".")}}</div>
-                        @if (isLogin())
-                            <a href="{{ url('home/menu/addToCart/' . $val->id) }}" class="harga">Add To Cart</a><br>
-                        @endif
-                    </div>
-
+                        <div style="width: 100%;height: 80px;">
+                            <div class="mname title99">{{ $val->name }}</div>
+                            <div class="mdes">{{ $val->deskripsi }}</div>
+                            <div class="harga">{{  "Rp " . number_format($val->harga, 2, ",", ".")}}</div>
+                            @if (isLogin())
+                                <a href="{{ url('home/menu/addToCart/' . $val->id) }}" class="tombol_edit_user">Add To Cart</a><br>
+                            @endif
+                        </div>
                 </div>
             </div>
         @endforeach

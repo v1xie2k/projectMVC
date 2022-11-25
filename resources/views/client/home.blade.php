@@ -187,12 +187,6 @@
       </div>
   </div>
   <!-- end container low -->
-
-  <!-- awal footer -->
-  <div class="foot">
-    <p class="copy">Copyright 2022 © Amazake</p>
-  </div>
-  <!-- end footer -->
 </div>
 @endsection
 
