@@ -63,17 +63,10 @@
                 <button type="submit" class="btn btn-success">Register</button>
             </form>
 
-            Already have account ? <a href="{{ url('login') }}">Login Here</a>
+            Already have account ? <a href="{{ url('login') }}"><button class="btn btn-primary">Login Here</button></a>
             <br>
 
 
         </div>
-    </div>
-
-
-
-
-    <div class="foot">
-        <p class="copy">Copyright 2021 © Amazake</p>
     </div>
 @endsection

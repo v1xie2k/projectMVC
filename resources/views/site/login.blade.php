@@ -17,10 +17,10 @@
             @error('password')
                 <div class="error"> {{$message}} </div> <br>
             @enderror
-            <button type="submit" name="submit">Login</button>
+            <button type="submit" name="submit" class="btn btn-primary">Login</button>
         </form>
 
-        Dont have account ? <a href="{{url('register')}}">Register Here</a>
+        Dont have account ? <a href="{{url('register')}}"><button class="btn btn-success">Register Here</button></a>
         @if (Session::has('pesan'))
             @php($pesan = Session::get('pesan'))
             @if ($pesan['tipe'] == 0)
@@ -31,9 +31,5 @@
         @endif
 
     </div>
-</div>
-
- <div class="foot">
-    <p class="copy">Copyright 2021 © Amazake</p>
 </div>
 @endsection

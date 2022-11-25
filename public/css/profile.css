@@ -145,7 +145,18 @@
 .data_user_alamat{
     padding-left:15px;
 }
-
+.loginnya{
+    background-color: #e4c087;
+    border: none;
+    text-decoration:none;
+    color: black;
+    text-align: center;
+    display: inline-block;
+    font-size: 15px;
+    cursor: pointer;
+    width: 130px;
+    height:20px;
+}
 .tombol_edit_user{
     background-color: #e4c087;
     border: none;
