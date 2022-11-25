@@ -56,7 +56,7 @@
     <!-- buat historical -->
     <br>
     <center>
-    <h1 style="font-family: myFt; height: 80px; margin-top: 20px;">Our Historical Food</h1>
+    <h1 style="font-family: myFt; height: 80px; margin-top: 20px;" class="jir">Our Historical Food</h1>
     </center>
     <!-- dalam historical (card)-->
     <div class="card_container">
@@ -67,7 +67,7 @@
                 <div class="card_text">
                     <h2>Edo Period</h2>
                     <br>
-                    Is the period between 1603 and 1867 in the history of Japan, when Japan was under the rule of the Tokugawa shogunate and the country's 300 regional daimyo.
+                    Is the period between 1603 and 1867 in the history of Japan.
                 </div>
             </div>
         </div>
@@ -91,7 +91,7 @@
                 <div class="card_text">
                     <h2>Taishou Period</h2>
                     <br>
-                    Is a period in the history of Japan dating from 30 July 1912 to 25 December 1926, coinciding with the reign of the Emperor Taishō.
+                    Is a period in the history of Japan dating from 30 July 1912 to 25 December 1926.
                 </div>
             </div>
         </div>
@@ -103,7 +103,7 @@
                 <div class="card_text">
                     <h2>Shōwa Period</h2>
                     <br>
-                    The Shōwa era refers to the period of Japanese history corresponding to the reign of Emperor Shōwa (Hirohito) from December 25, 1926 until his death on January 7, 1989.
+                    The Shōwa era refers to the period of Japanese history corresponding to the reign of Emperor Shōwa (Hirohito).
                 </div>
             </div>
         </div>
@@ -114,7 +114,7 @@
                 <div class="card_text">
                     <h2>Heisei Period</h2>
                     <br>
-                    Is the period of Japanese history corresponding to the reign of Emperor Akihito from 8 January 1989 until his abdication on 30 April 2019.
+                    Is the period of Japanese history corresponding to the reign of Emperor Akihito.
                 </div>
             </div>
         </div>

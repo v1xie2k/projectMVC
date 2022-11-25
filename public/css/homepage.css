@@ -300,6 +300,9 @@ animation: one2 1s alternate both;
     }
     }
 
+.jir{
+  padding-top: 50px;
+}
 .move{
   width: 150px;
   background-color: rgba(0, 0, 0, 0.247);
