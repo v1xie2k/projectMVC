@@ -17,6 +17,7 @@ class UserController extends Controller
     public function profile(Request $request)
     {
         $pictures = Storage::disk('public')->files("users");
+        $htrans = Htrans::where('id_user',getYangLogin()->id)->get();
         $picture = "default.jpg";
         foreach($pictures as $val)
         {
@@ -24,18 +25,20 @@ class UserController extends Controller
                 $picture = pathinfo($val)["basename"];
             }
         }
-        return view('client.user.profile',compact('picture'));
+        return view('client.user.profile',compact('picture','htrans'));
     }
     public function editprofile(Request $request)
     {
         $picture = Storage::disk('public')->files("users");
+        $pict='';
         foreach($picture as $val)
         {
             if(pathinfo($val)["filename"] == getYangLogin()->id){
-                $picture = pathinfo($val)["basename"];
+                $pict = pathinfo($val)["basename"];
             }
         }
-        return view('client.user.editprofile',compact('picture'));
+        return view('client.user.editprofile',['picture'=>$pict]);
+        // return view('client.user.editprofile',compact('picture'));
         // return view('client.user.editprofile');
     }
     public function doedit(Request $request)
@@ -43,15 +46,17 @@ class UserController extends Controller
         $user = Users::find($request->id);
         $validated = $request->validate([
             'name' => 'required|min:4|max:25',
-            'photos' => 'mimes:jpg,webp|max:10000',
+            'photo' => 'mimes:jpg,webp|max:10000',
             'alamat' => 'required'
         ]);
         $data = $request->all();
         if($request->photo != null){
             Storage::disk('public')->delete('users/'.$request->pict);
         }
-        $namaFile = $request->id.".".$request->file("photo")->getClientOriginalExtension();
-        $path = $request->file("photo")->storeAs("users", $namaFile, "public");
+        if($request->photo){
+            $namaFile = $request->id.".".$request->file("photo")->getClientOriginalExtension();
+            $path = $request->file("photo")->storeAs("users", $namaFile, "public");
+        }
         $user->update($data);
         return redirect()->back()->with('pesan',['tipe'=>1, 'isi'=> 'success update profle']);
     }

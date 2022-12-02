@@ -107,7 +107,8 @@
                                 Total
                             </div>
                             <div class="t3">
-                                {{ $total }}
+                                {{ 'Rp ' . number_format($total, 2, ',', '.') }}
+                                {{-- {{ $total }} --}}
                             </div>
                         </div>
                         <div class="textCart3">
@@ -145,7 +146,8 @@
 
                         <button class="buttonco" name="order">Check Out</button>
                         <input type="hidden" name="id_user" value="{{ getYangLogin()->id }}">
-                        <input type="hidden" name="total" value="{{ 'Rp ' . number_format($total, 2, ',', '.') }}">
+                        <input type="hidden" name="total" value="{{ $total }}">
+                        {{-- <input type="hidden" name="total" value="{{ 'Rp ' . number_format($total, 2, ',', '.') }}"> --}}
                         <input type="hidden" name="quantity" value="{{ $qty }}">
                     </form>
                 </div>

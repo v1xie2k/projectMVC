@@ -61,15 +61,15 @@ class HomePageController extends Controller
             $data['subtotal'] = $data['quantity'] * $data['price'];
             if(Cart::create($data))
             {
-                return redirect('home/menu')->with(['pesan' => ['tipe' => 1, 'isi' => 'Success add to cart']]);
+                return redirect()->back()->with(['pesan' => ['tipe' => 1, 'isi' => 'Success add to cart']]);
             }
-            return redirect('home/menu')->with(['pesan' => ['tipe' => 0, 'isi' => 'Failed add to cart']]);
+            return redirect()->back()->with(['pesan' => ['tipe' => 0, 'isi' => 'Failed add to cart']]);
         }else{
             $qty = $cart[0]->quantity += 1;
             $subtotal = $cart[0]->subtotal = $cart[0]->price * $cart[0]->quantity;
             $updateCart = DB::table('cart')->where('id_user', getYangLogin()->id)->where('id_menu',$request->id)->update(['quantity'=>$qty , 'subtotal'=>$subtotal]);
-            dd(Session::get('cart'));
-            return redirect('home/menu')->with(['pesan' => ['tipe' => 1, 'isi' => 'Success add to cart']]);
+            //dd(Session::get('cart'));
+            return redirect()->back()->with(['pesan' => ['tipe' => 1, 'isi' => 'Success add to cart']]);
             // dd($updateCart);
             //error karena pake dbraw maka ga bisa pake syntax update
             // $cart[0]->quantity += 1;

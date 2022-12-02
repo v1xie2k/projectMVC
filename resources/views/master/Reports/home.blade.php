@@ -41,6 +41,27 @@
         <h2>Total Trans : {{$total_trans}} </h2>
         <h2>Total qty sold : {{$total_qty}}</h2>
         <h2>Total Income : {{ 'Rp ' . number_format($total_income, 2, ',', '.') }}</h2>
+        <br>
+        <table border="1">
+            <thead>
+                <th>User</th>
+                <th>Courier</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Date</th>
+            </thead>
+            <tbody>
+                @foreach ($invoice as $val)
+                    <tr>
+                        <td>{{$val->Users->name}}</td>
+                        <td>{{$val->Ekspedisis->name}}</td>
+                        <td>{{$val->quantity}}</td>
+                        <td>{{$val->total}}</td>
+                        <td>{{$val->date}}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
         <br><br>
         <h1>Omzet Graph </h1>
         <div style="width: 100%; margin: auto;background-color: whitesmoke;border-radius: 10%;">

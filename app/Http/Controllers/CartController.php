@@ -97,11 +97,12 @@ class CartController extends Controller
                 $items = Dtrans::where('id_htrans',$htrans->id)->get();
                 $user = getYangLogin();
                 // return new InvoiceMail($items, $htrans->created_at);
-                // Mail::to(getYangLogin()->email)->send(new InvoiceMail($items, $htrans->created_at));
-                // return redirect()->back()->with(['msg'=>['isi'=>'Transaction Success','type'=>1]]);
+                Mail::to(getYangLogin()->email)->send(new InvoiceMail($items, $htrans->created_at));
+                return redirect()->back()->with(['msg'=>['isi'=>'Transaction Success','type'=>1]]);
             }
         }
         else{
+            return redirect()->back()->with(['msg'=>['isi'=>'Your Cart is Empty','type'=>0]]);
             // return redirect()->back()->with(['msg'=>['isi'=>'You dont have any items to checkout','type'=>0]]);
         }
     }

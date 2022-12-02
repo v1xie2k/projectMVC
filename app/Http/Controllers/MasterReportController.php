@@ -51,7 +51,7 @@ class MasterReportController extends Controller
         // $order["Des"] = Htrans::whereMonth("created_at",12)->whereYear("created_at",$year)->sum('total');
         // dd($order);
 
-        return view('master.Reports.home',compact('start','end','total_trans','total_income','total_qty'));
+        return view('master.Reports.home',compact('start','end','total_trans','total_income','total_qty','invoice'));
     }
     public function filterDate(Request $request)
     {

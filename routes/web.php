@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', [SiteController::class,'login']);
 Route::get('/login', [SiteController::class,'login']);
 Route::post('/dologin', [SiteController::class,'dologin']);
 Route::get('/register', [SiteController::class,'register']);

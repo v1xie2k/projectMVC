@@ -19,11 +19,13 @@
                 <h1>Name<span class="data_user_nama">: {{ getYangLogin()->name}}</span></h1><br>
                 <h1>Email<span class="data_user_email">: {{ getYangLogin()->email}}</span></h1><br>
                 <h1>Address<span class="data_user_alamat">: {{ getYangLogin()->alamat}}</span></h1><br>
-                <form action="#" method="get">
+                <a href="{{url('home/user/editprofile/'.getYangLogin()->id)}}"><button class="tombol_edit_user">Edit Profile</button></a><br><br>
+                <a href="{{url('home/user/editpassword/'.getYangLogin()->id)}}"><button class="tombol_edit_user">Edit Password</button></a>
+                {{-- <form action="#" method="get">
                     <input type="hidden" name="edit" value="(email)">
                     <a href="{{url('home/user/editprofile/'.getYangLogin()->id)}}"><button class="tombol_edit_user">Edit Profile</button></a><br>
                     <a href="{{url('home/user/editpassword/'.getYangLogin()->id)}}"><button class="tombol_edit_user">Edit Password</button></a>
-                </form>
+                </form> --}}
             </div>
         </div>
         <!-- end profile kiri -->
@@ -65,15 +67,17 @@
                         <th>Detail</th>
                     </thead>
                     <tbody>
-                        <tr id="tabel_history">
-                            <td>(tanggal)</td>
-                            <td> (total)</td>
-                            <td><form action="#" method="get">
-                                <input type="hidden" name="detail3" value="(htrans)">
-                                <button>Detail</button>
-                            </form></td>
-                        </tr>
-                        <td colspan="2">You don't have any transaction history</td>
+                        @if ($htrans)
+                            @foreach ($htrans as $val)
+                                <tr id="tabel_history">
+                                    <td>{{$val->date}}</td>
+                                    <td>{{$val->total}}</td>
+                                    <td><a href="{{url('home/user/history/trans/detail/'.$val->id)}}" class="btn btn-secondary">Detail</a></td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <td colspan="2">You don't have any transaction history</td>
+                        @endif
                     </tbody>
                 </table>
             </div>
