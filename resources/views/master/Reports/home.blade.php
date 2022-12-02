@@ -2,7 +2,9 @@
 {{-- @include('navbar2') --}}
 @section('adminlte_css_pre')
 <link rel="stylesheet" href="{{ asset('css/mycssadmin.css') }}" media="screen">
+
 @endsection
+
 @section('body')
 @include('navbar2')
     <div class="product">
@@ -36,10 +38,69 @@
             @endif
         @endif --}}
         <br><br>
-        <h1>Total Trans {{$total_trans}} </h1>
-        <h1>Total qty sold {{$total_qty}}</h1>
-        <h1>Total Income {{$total_income}}</h1>
+        <h2>Total Trans : {{$total_trans}} </h2>
+        <h2>Total qty sold : {{$total_qty}}</h2>
+        <h2>Total Income : {{ 'Rp ' . number_format($total_income, 2, ',', '.') }}</h2>
+        <br><br>
+        <h1>Omzet Graph </h1>
+        <div style="width: 100%; margin: auto;background-color: whitesmoke;border-radius: 10%;">
+            <div style="width: 90%; margin: auto;">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
     </div>
 
+
+
+@endsection
+
+@section('adminlte_js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script>
+    $(function() {
+    $.ajax({
+        type: "GET",
+        url: "{{ url('/admin/report/data') }}",
+        success: function (response) {
+            console.log(response);
+            const data = {
+                labels: ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","November","Desember"],
+                datasets: [{
+                    label: "Omzet per bulan",
+                    data: [
+                        parseInt(response.Jan),
+                        parseInt(response.Feb),
+                        parseInt(response.Mar),
+                        parseInt(response.Apr),
+                        parseInt(response.Mei),
+                        parseInt(response.Jun),
+                        parseInt(response.Jul),
+                        parseInt(response.Aug),
+                        parseInt(response.Sep),
+                        parseInt(response.Okt),
+                        parseInt(response.Nov),
+                        parseInt(response.Des)
+                    ],
+                    fill: false,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                }]
+            };
+
+            var ctx = $('#myChart');
+
+            const config = {
+                type: 'line',
+                data: data,
+            };
+
+            var chart = new Chart(ctx, config);
+        },
+        error: function(xhr) {
+            console.log(xhr.responseJSON);
+        }
+    });
+  });
+</script>
 @endsection
 

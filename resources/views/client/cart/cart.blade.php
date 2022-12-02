@@ -76,10 +76,10 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <p class="harganew">{{ $val->Menus[0]->harga }}</p>
+                                            <p class="harganew">{{ 'Rp ' . number_format($val->Menus[0]->harga, 2, ',', '.') }}</p>
                                         </td>
-                                        <td>
-                                            <p class="totalnew">{{ $val->subtotal }}</p>
+                                        <td>{{ 'Rp ' . number_format($val->subtotal, 2, ',', '.') }}
+                                            <p class="totalnew">{{ 'Rp ' . number_format($val->subtotal, 2, ',', '.') }}</p>
                                         </td>
                                     </tr>
 
@@ -120,7 +120,8 @@
                                 <select name="id_ekspedisi" id="ekspedisi" style="color: #ebcdba; background:none;border: none;background-color: black;" onchange="calc_total()">
                                     @foreach ($ekspedisis as $val)
                                         <option value="{{ $val->id }}"> {{ $val->name }} -
-                                            {{ $val->ongkir }}
+                                            {{ 'Rp ' . number_format($val->ongkir, 2, ',', '.') }}
+
                                         </option>
                                     @endforeach
                                 </select>
@@ -139,12 +140,12 @@
                             </div>
                         </div>
                         <div class="textC4">
-                            Your Balance is {{ getYangLogin()->saldo }}
+                            Your Balance is {{ 'Rp ' . number_format(getYangLogin()->saldo, 2, ',', '.') }}
                         </div>
 
                         <button class="buttonco" name="order">Check Out</button>
                         <input type="hidden" name="id_user" value="{{ getYangLogin()->id }}">
-                        <input type="hidden" name="total" value="{{ $total }}">
+                        <input type="hidden" name="total" value="{{ 'Rp ' . number_format($total, 2, ',', '.') }}">
                         <input type="hidden" name="quantity" value="{{ $qty }}">
                     </form>
                 </div>

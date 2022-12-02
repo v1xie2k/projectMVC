@@ -106,6 +106,7 @@ Route::prefix('admin')->middleware(['CheckRole:admin'])->group(function () {
     });
     Route::prefix('report')->group(function () {
         Route::get('',[MasterReportController::class,'home']);
+        Route::get('data',[MasterReportController::class,'data']);
         Route::post('filterDate',[MasterReportController::class,'filterDate']);
     });
 });

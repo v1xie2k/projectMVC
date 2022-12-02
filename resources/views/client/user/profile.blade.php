@@ -11,7 +11,7 @@
 
                 <img src="{{asset('storage/users/'.$picture)}}" class="card-img-top" alt="...">
                 @endif
-                <div class="profile"></div> 
+                <div class="profile"></div>
             </div>
 
             <div class="data_user">
@@ -30,7 +30,7 @@
 
         <!-- atur profile kanan -->
         <div class="profile_kanan">
-            <h2 style="color: #ffffff;">Your Balance is : {{ getYangLogin()->saldo}}</h2><br>
+            <h2 style="color: #ffffff;">Your Balance is : {{ 'Rp ' . number_format(getYangLogin()->saldo, 2, ',', '.') }}</h2><br>
             <div class="top_up">
                 <h4>Masukan jumlah topup</h4>
                     <br>
@@ -50,12 +50,12 @@
                     <a href="{{url('home/user/history/trans')}}"><button class="tombol_history">History Top Up</button></a>
                 </form>
             </div>
-            
+
             <br>
             <center>
             <h2 class="font_profile">Purchase History</h2>
             </center>
-            
+
             <!-- tabelnya -->
             <div class="tabel_top_up">
                 <table>
