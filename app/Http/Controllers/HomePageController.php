@@ -22,7 +22,6 @@ class HomePageController extends Controller
         {
             Session::push('categoriesPicts', pathinfo($val)["basename"]);
         }
-
         $picts = Session::get('categoriesPicts');
         // dd($picts);
         return view('client.menu.listcategory',compact('categories','picts'));

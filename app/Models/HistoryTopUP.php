@@ -21,6 +21,7 @@ class HistoryTopUP extends Model
     protected $fillable = [
         'id_user',
         'topup',
+        'status'
     ];
     public function Users(){
         return $this->belongsTo(Users::class, 'id_user','id');
