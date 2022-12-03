@@ -139,6 +139,27 @@ form{
     color: #98825b;
 }
 
+.product5{
+  width: 100%;
+  height: 100vh;
+  min-width: 800px;
+  background-repeat:repeat-y;
+  color: black;
+  padding: 10vh;
+  background-image: url(gallery/bgcart2.jpg);
+    background-size:100% 100%;
+}
+.product6{
+    width: 100%;
+    height: 100vh;
+    min-width: 800px;
+    background-repeat:repeat-y;
+    padding: 10vh;
+    color: black;
+    background-image: url(gallery/Background4.jpg);
+    background-size:100% 100%;
+}
+
 .product3{
     width: 100%;
     height: 50vh;

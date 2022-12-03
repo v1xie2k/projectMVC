@@ -1,7 +1,7 @@
 @extends('layouts.layout2')
 @include('navbar2')
 @section('content')
-    <div class="product">
+    <div class="product3">
         <h1>List Users</h1>
 
         @if (Session::has('pesan'))
