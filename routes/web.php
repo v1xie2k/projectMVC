@@ -62,6 +62,7 @@ Route::prefix('home')->group(function () {
         // Route::get('details/{id}',[UserController::class,'detail']);
         Route::get('history/trans',[UserController::class,'historyTrans']);
         Route::get('history/trans/detail/{id}',[UserController::class,'historyTransDetail']);
+        Route::post('topup',[UserController::class,'dotopup']);
     });
 });
 

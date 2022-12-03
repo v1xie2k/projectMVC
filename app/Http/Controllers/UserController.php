@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dtrans;
+use App\Models\HistoryTopUP;
 use App\Models\Htrans;
 use App\Models\Users;
 use App\Rules\CheckEmail;
@@ -86,5 +87,26 @@ class UserController extends Controller
     {
         $details = Dtrans::where('id_htrans', $request->id)->get();
         return view('client.user.detailtrans',compact('details'));
+    }
+
+    public function dotopup(Request $request)
+    {
+        $jumlah = $request->jum;
+        $id_user = getYangLogin()->id;
+        $validated = $request->validate([
+            'jum' => 'required',
+        ]);
+        $data = [
+            "id_user" => $id_user,
+            "topup" => $jumlah,
+            "status" => 0
+        ];
+        $id = HistoryTopUP::create($data);
+        if($id){
+            return redirect()->back()->with('msg',['tipe'=>1, 'isi'=> 'Topupmu telah diproses']);
+        }
+        else{
+            return redirect()->back()->with('msg',['tipe'=>0, 'isi'=> 'Gagal topup']);
+        }
     }
 }

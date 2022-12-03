@@ -36,8 +36,20 @@
             <div class="top_up">
                 <h4>Masukan jumlah topup</h4>
                     <br>
-                <form action="" method="post">
-                    <input type="number" name="jum" id="" min="0">
+                    @if (Session::has('msg'))
+                        @php($msg = Session::get('msg'))
+                            @if ($msg['tipe'] == 0)
+                                <div class="alert alert-danger">{{ $msg['isi'] }}</div>
+                            @else
+                                <div class="alert alert-success">{{ $msg['isi'] }}</div>
+                        @endif
+                    @endif
+                <form action="{{ url('home/user/topup') }}" method="post">
+                    @csrf
+                    <input type="text" inputmode="numeric" name="jum" id="" min="0">
+                    @error('jum')
+                        <div class="error"> {{$message}} </div> <br>
+                    @enderror
                     <br>
                     <button class="tombol_top_up" name="topup">Top Up</button>
                 </form>
