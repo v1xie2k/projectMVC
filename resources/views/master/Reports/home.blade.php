@@ -85,7 +85,7 @@
         success: function (response) {
             console.log(response);
             const data = {
-                labels: ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","November","Desember"],
+                labels: ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"],
                 datasets: [{
                     label: "Omzet per bulan",
                     data: [
