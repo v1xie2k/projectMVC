@@ -15,17 +15,37 @@
             </div>
 
             <div class="data_user">
-                <!-- data user -->
-                <h1>Name<span class="data_user_nama">: {{ getYangLogin()->name}}</span></h1><br>
-                <h1>Email<span class="data_user_email">: {{ getYangLogin()->email}}</span></h1><br>
-                <h1>Address<span class="data_user_alamat">: {{ getYangLogin()->alamat}}</span></h1><br>
-                <a href="{{url('home/user/editprofile/'.getYangLogin()->id)}}"><button class="tombol_edit_user">Edit Profile</button></a><br><br>
-                <a href="{{url('home/user/editpassword/'.getYangLogin()->id)}}"><button class="tombol_edit_user">Edit Password</button></a>
-                {{-- <form action="#" method="get">
-                    <input type="hidden" name="edit" value="(email)">
-                    <a href="{{url('home/user/editprofile/'.getYangLogin()->id)}}"><button class="tombol_edit_user">Edit Profile</button></a><br>
-                    <a href="{{url('home/user/editpassword/'.getYangLogin()->id)}}"><button class="tombol_edit_user">Edit Password</button></a>
-                </form> --}}
+                <h2 style="color: #ffffff;">Top Up Site</h2><br>
+                <div class="top_up">
+                        <div class="tabel_top_up">
+                        <table>
+                            <thead>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                            </thead>
+                            <tbody>
+                                @if ($topup)
+                                    @foreach ($topup as $val)
+                                        <tr id="tabel_history">
+                                            <td>{{$val->created_at}}</td>
+                                            <td>{{$val->topup}}</td>
+                                            @if ($val->status == 0)
+                                                <td>Pending</td>
+                                            @elseif($val->status == 1)
+                                                <td>Accepted</td>
+                                            @elseif($val->status == 2)
+                                                <td>Rejected</td>
+                                            @endif
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    <td colspan="2">You don't have any transaction history</td>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- end profile kiri -->
@@ -54,13 +74,13 @@
                     <button class="tombol_top_up" name="topup">Top Up</button>
                 </form>
                 <br>
-                <form action="{{url('home/user/history/topup')}}" method="get">
+                <form action="{{url('home/user/profile')}}" method="get">
                     <input type="hidden" name="detail" value="(email)">
-                    <a href="{{url('home/user/history/topup')}}"><button class="tombol_history">History Top Up</button></a>
+                    <a href="{{url('home/user/profile')}}"><button class="tombol_history">Back to profile</button></a>
                 </form>
             </div>
 
-            <br>
+            {{-- <br>
             <center>
             <h2 class="font_profile">Purchase History</h2>
             </center>
@@ -87,7 +107,7 @@
                         @endif
                     </tbody>
                 </table>
-            </div>
+            </div> --}}
             <!-- end table -->
         </div>
         <!-- end profile kanan -->

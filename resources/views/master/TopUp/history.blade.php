@@ -2,44 +2,31 @@
 @include('navbar2')
 @section('content')
     <div class="product">
-        <h1>Top Up Transaction</h1>
-
-        <form action="{{ url('/admin/topup/dofilter') }}" method="post" enctype="multipart/form-data">
-            @csrf
-            <div class="mb-3">
-                <label for="sort">Sort by:</label>
-                <select name="sort" id="sorting">
-                    {{-- @foreach ($categories as $value) --}}
-                        <option value="asc">Newest History Top Up</option>
-                        <option value="old">Oldest History Top Up</option>
-                    {{-- @endforeach --}}
-                </select><br><br>
-                <label for="search">Search Top Up:</label>
-                <input type="text" name="" id="search">
-            </div>
-            
-            <button type="submit" class="btn btn-success btn-sm">Search</button>
-        </form>
+        <h1>History of Top Up Transaction</h1>
         
         <br><br>
         <div class="card-body">
             <table class="table responsive table-dark" id="tableHasil">
-                <thead class="thead-dark">
+                <thead class="thead-dark" style="text-align: center">
                     <tr>
-                        <th>Name</th>
+                        <th style="text-align: left">Name</th>
                         <th>Date</th>
                         <th>Balance</th>
-                        <th colspan="2">Status</th>
+                        <th colspan="2" >Status</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody style="text-align: center">
                     @foreach ($topup as $item)
                         <tr>
-                            <td>{{$item->Users->name}}</td>
+                            <td style="text-align: left">{{$item->Users->name}}</td>
                             <td>{{$item->date_time}}</td>
                             <td>{{$item->topup}}</td>
-                            <td>Rejected</td>
-                            <td>2022/11/09</td>
+                                @if($item->status == 1)
+                                    <td>Accepted</td>
+                                @elseif($item->status == 2)
+                                    <td>Rejected</td>
+                                @endif
+                            <td>{{$item->updated_at}}</td>
                         </tr>
                     @endforeach
                 </tbody>

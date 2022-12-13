@@ -63,6 +63,7 @@ Route::prefix('home')->group(function () {
         Route::get('history/trans',[UserController::class,'historyTrans']);
         Route::get('history/trans/detail/{id}',[UserController::class,'historyTransDetail']);
         Route::post('topup',[UserController::class,'dotopup']);
+        Route::get('history/topup',[UserController::class,'htopup']);
     });
 });
 
@@ -104,7 +105,9 @@ Route::prefix('admin')->middleware(['CheckRole:admin'])->group(function () {
     });
     Route::prefix('topup')->group(function () {
         Route::get('',[MasterTopupController::class,'home']);
-        Route::get('history',[MasterTopupController::class,'home2']);
+        Route::get('accept/{id}',[MasterTopupController::class,'acc']);
+        Route::get('reject/{id}',[MasterTopupController::class,'reject']);
+        Route::get('history',[MasterTopupController::class,'history']);
     });
     Route::prefix('report')->group(function () {
         Route::get('',[MasterReportController::class,'home']);

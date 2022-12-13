@@ -109,4 +109,20 @@ class UserController extends Controller
             return redirect()->back()->with('msg',['tipe'=>0, 'isi'=> 'Gagal topup']);
         }
     }
+
+    public function htopup(Request $request)
+    {
+        $pictures = Storage::disk('public')->files("users");
+        $htrans = Htrans::where('id_user',getYangLogin()->id)->get();
+        $picture = "default.jpg";
+        foreach($pictures as $val)
+        {
+            if(pathinfo($val)["filename"] == getYangLogin()->id){
+                $picture = pathinfo($val)["basename"];
+            }
+        }
+
+        $topup = HistoryTopUP::where('id_user',getYangLogin()->id)->get();
+        return view('client.user.historytop' ,compact('topup', 'picture'));
+    }
 }
