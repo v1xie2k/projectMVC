@@ -51,6 +51,36 @@ class UserSeeder extends Seeder
             "created_at" => date("Y-m-d H-i-s"),
             "updated_at" => date("Y-m-d H-i-s"),
             ],
+            [
+                "name" => "pekora" ,
+                "email" => "pekora@gmail.com",
+                'password' => Hash::make('123'),
+                "alamat" => "jl pekora",
+                "saldo" => 150000,
+                "role" => "user",
+                "created_at" => date("Y-m-d H-i-s"),
+                "updated_at" => date("Y-m-d H-i-s"),
+            ],
+            [
+                "name" => "botan" ,
+                "email" => "botan@gmail.com",
+                'password' => Hash::make('123'),
+                "alamat" => "jl botan",
+                "saldo" => 25000,
+                "role" => "user",
+                "created_at" => date("Y-m-d H-i-s"),
+                "updated_at" => date("Y-m-d H-i-s"),
+            ],
+            [
+                "name" => "aqua" ,
+                "email" => "aqua@gmail.com",
+                'password' => Hash::make('123'),
+                "alamat" => "jl aqua",
+                "saldo" => 55000,
+                "role" => "user",
+                "created_at" => date("Y-m-d H-i-s"),
+                "updated_at" => date("Y-m-d H-i-s"),
+            ],
         ]);
         Users::factory()->count(10)->create();
     }

@@ -3,7 +3,7 @@
 @section('content')
     <div class="product">
         <h1>History of Top Up Transaction</h1>
-        
+
         <br><br>
         <div class="card-body">
             <table class="table responsive table-dark" id="tableHasil">
@@ -12,7 +12,8 @@
                         <th style="text-align: left">Name</th>
                         <th>Date</th>
                         <th>Balance</th>
-                        <th colspan="2" >Status</th>
+                        <th>Status</th>
+                        <th>Updated At</th>
                     </tr>
                 </thead>
                 <tbody style="text-align: center">

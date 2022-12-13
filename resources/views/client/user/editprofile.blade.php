@@ -5,6 +5,7 @@
 @endsection
 @section('content')
     <div class="product6">
+    <a href="{{url('home/user/profile')}}"><button class="btn btn-primary" style="width:9.5%;">Back To Profile</button></a><br>
     <h1>Edit Profile</h1>
         <form action="{{ url('home/user/doedit/'.getYangLogin()->id) }}" method="post" enctype="multipart/form-data">
             @csrf
@@ -46,7 +47,6 @@
             <button type="submit" class="btn btn-success">Save</button>
         </form>
         <br>
-        <a href="{{url('home/user/profile')}}"><button class="btn btn-primary" style="width:85%;">Back To Profile</button></a><br>
         <label  class="form-label">User Picture</label>
         <div class="card" style="width: 18rem;">
             @if ($picture)
@@ -54,5 +54,5 @@
             @endif
         </div>
     </div>
-    
+
 @endsection

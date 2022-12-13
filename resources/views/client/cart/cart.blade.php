@@ -130,7 +130,7 @@
                         </div>
                         <hr>
                         Note: Shipping Cost have not been added to Grang Total
-                        <div class="textCart3">
+                        {{-- <div class="textCart3">
 
                             <div class="t1">
                                 Grand Total
@@ -139,7 +139,7 @@
                                 <p id="grand_total">{{ $total }}</p>
 
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="textC4">
                             Your Balance is {{ 'Rp ' . number_format(getYangLogin()->saldo, 2, ',', '.') }}
                         </div>

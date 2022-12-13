@@ -5,6 +5,7 @@
 @endsection
 @section('content')
     <div class="product5">
+        <a href="{{url('home/user/profile')}}"><button class="btn btn-primary" style="width:9.5%;">Back To Profile</button></a><br>
         <h1>Edit Password</h1>
         <form action="{{ url('home/user/doedit/password/'.getYangLogin()->id) }}" method="post">
             @csrf
@@ -31,7 +32,6 @@
             <button type="submit" class="btn btn-success">Save</button>
         </form>
         <br>
-        <a href="{{url('home/user/profile')}}"><button class="btn btn-primary" style="width:85%;">Back To Profile</button></a>
     </div>
-    
+
 @endsection
