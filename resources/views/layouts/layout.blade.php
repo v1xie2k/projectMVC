@@ -10,7 +10,8 @@
     {{-- <link rel="stylesheet" href="{{ asset('css/mycssadmin.css') }}" media="screen"> --}}
     <link rel="stylesheet" href="{{ asset('css/index.css') }}" media="screen">
     <link rel="stylesheet" href="{{ asset('css/homepage.css') }}" media="screen">
-    <link rel="stylesheet" href="{{ asset('css/profile.css') }}" media="screen"> 
+    <link rel="stylesheet" href="{{ asset('css/profile.css') }}" media="screen">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <body>
     <div>
