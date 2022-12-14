@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\HistoryTopUP;
+use App\Models\Refund;
 use App\Models\Users;
 use Illuminate\Http\Request;
 
@@ -47,7 +48,16 @@ class MasterTopupController extends Controller
         // dd($update_saldo);
         if($acc){
             if($acc->update(['status'=>2])){
-                return redirect()->back()->with('pesan',['tipe'=>1, 'isi'=> 'Berhasil reject']);
+                $data = [
+                    "id_user" => $acc->id_user,
+                    "subtotal" => $acc->topup,
+                    "name_admin" => getYangLogin()->name
+                ];
+                $refund = Refund::create($data);
+                if($refund){
+                    return redirect()->back()->with('pesan',['tipe'=>1, 'isi'=> 'Berhasil reject']);
+                }
+                return redirect()->back()->with('pesan',['tipe'=>0, 'isi'=> 'Gagal reject']);
             }
             else{
                 return redirect()->back()->with('pesan',['tipe'=>0, 'isi'=> 'Gagal reject']);
@@ -59,7 +69,7 @@ class MasterTopupController extends Controller
     {
         $topup = HistoryTopUP::where('status','<>',0)->get();
         return view('master.topup.history',compact('topup'));
-    } 
+    }
 
 
 }

@@ -6,6 +6,15 @@
 @section('content')
     <div class="product6">
     <a href="{{url('home/user/profile')}}"><button class="btn btn-primary" style="width:9.5%;">Back To Profile</button></a><br>
+    <br>
+    @if (Session::has('pesan'))
+            @php($pesan = Session::get('pesan'))
+            @if ($pesan['tipe'] == 0)
+                <div class="alert alert-danger">{{ $pesan['isi'] }}</div>
+            @else
+                <div class="alert alert-success">{{ $pesan['isi'] }}</div>
+            @endif
+    @endif
     <h1>Edit Profile</h1>
         <form action="{{ url('home/user/doedit/'.getYangLogin()->id) }}" method="post" enctype="multipart/form-data">
             @csrf

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Dtrans;
 use App\Models\HistoryTopUP;
 use App\Models\Htrans;
+use App\Models\Refund;
 use App\Models\Users;
 use App\Rules\CheckEmail;
 use App\Rules\CheckOldPassword;
@@ -75,6 +76,7 @@ class UserController extends Controller
         $data = $request->all();
         $data["password"] = Hash::make($request->password);
         $user->update($data);
+        // return redirect('home/user/profile')->with('pesan',['tipe'=>1, 'isi'=> 'success change password']);
         return redirect()->back()->with('pesan',['tipe'=>1, 'isi'=> 'success change password']);
     }
     public function historyTrans(Request $request)
@@ -123,7 +125,7 @@ class UserController extends Controller
     public function htopup(Request $request)
     {
         $pictures = Storage::disk('public')->files("users");
-        $htrans = Htrans::where('id_user',getYangLogin()->id)->get();
+        // $htrans = Htrans::where('id_user',getYangLogin()->id)->get();
         $picture = "default.jpg";
         foreach($pictures as $val)
         {
@@ -131,8 +133,8 @@ class UserController extends Controller
                 $picture = pathinfo($val)["basename"];
             }
         }
-
+        $refund = Refund::where('id_user',getYangLogin()->id)->get();
         $topup = HistoryTopUP::where('id_user',getYangLogin()->id)->get();
-        return view('client.user.historytop' ,compact('topup', 'picture'));
+        return view('client.user.historytop' ,compact('topup', 'picture', 'refund'));
     }
 }

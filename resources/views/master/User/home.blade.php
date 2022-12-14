@@ -15,25 +15,25 @@
             <div class="alert alert-danger">{{ $pesan['isi'] }}</div>
         @endif
     @endif
-       
+
         <form action="{{ url('/admin/user/dosearch') }}" method="post" enctype="multipart/form-data">
             @csrf
+            <div class="mb-3">
+                <label for="search">Search user:</label><br>
+                <input type="text" name="search" id="" style="width: 117%;">
+            </div>
             <label for="sort">Sort by:</label>
-            <select name="sort" id="sorting">
+            <select name="sort" id="sorting" style="width: 117%;">
                 {{-- @foreach ($categories as $value) --}}
                     <option value="new">Newest User</option>
                     <option value="old" >Oldest User</option>
                     <option value="asc" >A-Z Name</option>
                     <option value="desc">Z-A Name</option>
                 {{-- @endforeach --}}
-            </select><br><br>
-            <div class="mb-3">     
-                <label for="search">Search user:</label>
-                <input type="text" name="search" id="">
-            </div>
-            <button type="submit" class="btn btn-success btn-sm">Search</button>
+            </select><br>
+            <button type="submit" class="btn btn-success btn-sm" style="width: 117%;">Search</button>
         </form>
-        
+
         <br><br>
         <div class="card-body">
             <table class="table responsive table-dark" id="tableHasil">
@@ -69,8 +69,8 @@
 @section('plugins.Datatables', true)
 @section('custom_js')
 <script>
-   
-    
+
+
    $(document).ready(function(){
         console.log("test");
         var table = $("#table").DataTable({

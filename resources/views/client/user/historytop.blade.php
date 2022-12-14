@@ -46,6 +46,32 @@
                         </table>
                     </div>
                 </div>
+                <br>
+                <h2 style="color: #ffffff;">Refund History</h2><br>
+                <div class="top_up">
+                        <div class="tabel_top_up">
+                        <table>
+                            <thead>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Admin</th>
+                            </thead>
+                            <tbody>
+                                @if ($refund)
+                                    @foreach ($refund as $val)
+                                        <tr id="tabel_history">
+                                            <td>{{$val->created_at}}</td>
+                                            <td>{{$val->subtotal}}</td>
+                                            <td>{{$val->name_admin}}</td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    <td colspan="2">You don't have any transaction history</td>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- end profile kiri -->

@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Refund extends Model
 {
     use HasFactory;
-    use SoftDeletes;
 
     // protected $connection   = "konek_buku";
     protected $table        = "refund";
@@ -26,5 +25,5 @@ class Refund extends Model
     public function Users(){
         return $this->belongsTo(Users::class, 'id_user','id');
     }
-    
+
 }

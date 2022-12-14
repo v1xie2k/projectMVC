@@ -3,7 +3,7 @@
 @section('content')
 <!-- awal profile -->
 <div class="container_profile">
-    <div class ="back_profile">
+    <div class ="back_profile"> 
         <!-- atur profile kiri -->
         <div class="profile_left">
             <div class="picture_profile">

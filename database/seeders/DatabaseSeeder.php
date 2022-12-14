@@ -29,5 +29,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TopupSeeder::class);
         $this->call(DtransSeeder::class);
         $this->call(HtransSeeder::class);
+        $this->call(RefundSeeder::class);
     }
 }

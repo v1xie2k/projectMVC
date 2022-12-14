@@ -25,10 +25,12 @@
             <div class="mb-3">
                 <label for="id_kategori">Choose a Date Range:</label>
                 <input type="date" name="start" id="" value="{{ \carbon\carbon::parse($start)->isoFormat("YYYY-MM-DD")}}">
+                <label for="id_kategori"> &nbsp; To  &nbsp;</label>
                 <input type="date" name="end" id="" value="{{ \carbon\carbon::parse($end)->isoFormat("YYYY-MM-DD")}}">
+                &nbsp; &nbsp;
+                <button type="submit" class="btn btn-success" style="height: 30px; width:100px; line-height:0px; ">Filter</button>
             </div>
-            <button type="submit" class="btn btn-success">Filter</button>
-        </form><br>
+        </form>
         {{-- @if (Session::has('pesan'))
             @php($pesan = Session::get('pesan'))
             @if ($pesan['tipe'] == 0)
