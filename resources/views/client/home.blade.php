@@ -29,7 +29,7 @@
             <div id="gambarnya">
             </div>
         </div>
-        <div class="container_history">
+        <div class="container_history" style = "padding-top:50px;">
             <div class="kata1">History</div>
             <div class="kata2">of</div>
             <div class="kata3">Amazake</div>
@@ -43,11 +43,6 @@
               Amazake is no ordinary dining restaurant. We believe in providing an alluring ambience that sets us apart from a regular diner.
 
               Illustrating the emerging influence Asia has on modern Japanese cuisine, our menu features a fusion of traditional Japanese dishes with modern innovative trends. An ever-evolving selection of appetizers, mains and sushi specials will guarantee you a truly authentic Japanese dining experience.
-              <br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              We frequently release seasonal themes to entice the taste buds of our customers. Some of which highlight items according to Japan’s seasons – Summer, Fall, Winter, Spring – and specialty items from regions such as Hokkaido, Miyazaki, Kagoshima, and many more.
-
-              A modest homegrown , our open-kitchen concept allows patrons to appreciate the culinary skills of our restaurants’ chefs while relishing mouth-watering savouries.
             </div>
         </div>
     </div>

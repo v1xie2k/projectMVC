@@ -7,7 +7,7 @@
 @section('body')
 @include('navbar2')
 
-    <div class="product">
+    <div class="product2">
 
         <h1>Detail Transaction</h1>
         <div class="card-body">
