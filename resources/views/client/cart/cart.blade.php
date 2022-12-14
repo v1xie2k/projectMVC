@@ -78,7 +78,8 @@
                                         <td>
                                             <p class="harganew">{{ 'Rp ' . number_format($val->Menus[0]->harga, 2, ',', '.') }}</p>
                                         </td>
-                                        <td>{{ 'Rp ' . number_format($val->subtotal, 2, ',', '.') }}
+                                        <td>
+                                            {{-- {{ 'Rp ' . number_format($val->subtotal, 2, ',', '.') }} --}}
                                             <p class="totalnew">{{ 'Rp ' . number_format($val->subtotal, 2, ',', '.') }}</p>
                                         </td>
                                     </tr>

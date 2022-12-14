@@ -85,8 +85,18 @@ class UserController extends Controller
     }
     public function historyTransDetail(Request $request)
     {
+        $pictures = Storage::disk('public')->files("users");
+        $picture = "default.jpg";
+        $htrans = Htrans::where('id_user',getYangLogin()->id)->get();
+        foreach($pictures as $val)
+        {
+            if(pathinfo($val)["filename"] == getYangLogin()->id){
+                $picture = pathinfo($val)["basename"];
+            }
+        }
+
         $details = Dtrans::where('id_htrans', $request->id)->get();
-        return view('client.user.detailtrans',compact('details'));
+        return view('client.user.detailtrans',compact('details','picture','htrans'));
     }
 
     public function dotopup(Request $request)

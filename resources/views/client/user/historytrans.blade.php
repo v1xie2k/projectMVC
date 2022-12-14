@@ -1,8 +1,5 @@
 @extends('layouts.layout')
 @section('content')
-<a href="{{ url('excel/doExportExcel') }}" class="btn btn-success">Export Excel</a>
-
-<hr>
     <table border="1">
         <thead>
            <tr>

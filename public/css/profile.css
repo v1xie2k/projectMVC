@@ -169,6 +169,12 @@
     width: 130px;
     height:20px;
   }
+.addcart{
+    background-color: rgba(36, 36, 36, 0.431);
+    justify-content: center;
+    align-items: center;
+    height: 40%;
+}
 .profile_kanan{
 color: #f5eee5ef;
 padding: 3vh;
