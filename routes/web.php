@@ -86,7 +86,7 @@ Route::prefix('admin')->middleware(['CheckRole:admin'])->group(function () {
         Route::get('',[transactionController::class,'home']);
         Route::get('ltrans',[transactionController::class,'ltrans']);
         Route::get('details/{id}',[transactionController::class,'detail']);
-
+        Route::get('doExportExcel', [transactionController::class,'doExportExcel']);
     });
 
     Route::prefix('category')->group(function () {

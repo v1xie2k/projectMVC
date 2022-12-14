@@ -32,8 +32,9 @@
 @section('body')
 @include('navbar2')
     <div class="product2">
-
+        
         <h1>List Menu</h1>
+        <a href="{{ url('admin/transaction/doExportExcel') }}" class="btn btn-success">Export Excel</a>
         <div class="card-body">
             <table class="table responsive" id="table">
                 <thead class="thead-dark">

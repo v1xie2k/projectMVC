@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\TransactionExport;
+use App\Exports\TransactionSheetExport;
 use App\Models\Dtrans;
 use App\Models\Ekspedisi;
 use App\Models\Htrans;
 use App\Models\Users;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
+use Maatwebsite\Excel\Facades\Excel;
 
 class transactionController extends Controller
 {
@@ -42,5 +45,11 @@ class transactionController extends Controller
     {
         $dtrans = Dtrans::where('id_htrans',$request->id)->get();
         return view('master.transaction.detail',compact('dtrans'));
+    }
+    public function doExportExcel(Request $request)
+    {
+        $user = getYangLogin();
+        return Excel::download(new TransactionSheetExport(),'Penjualan.xls');
+
     }
 }
