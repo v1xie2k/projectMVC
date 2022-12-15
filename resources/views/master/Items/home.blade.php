@@ -3,32 +3,6 @@
 @section('adminlte_css_pre')
 <link rel="stylesheet" href="{{ asset('css/mycssadmin.css') }}" media="screen">
 @endsection
-{{-- @section('adminlte_css')
-<style>
-.nav{
-    padding: 0;
-    height: 8vh;
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    margin: 0;
-    position: fixed;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 1
-}
-.logo{
-    height: 8vh;
-}
-
-.ar {
-    color: #ffffff;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 20px;
-    line-height: 42px;
-}
-</style>
-@endsection --}}
 @section('body')
 @include('navbar2')
     <div class="product">

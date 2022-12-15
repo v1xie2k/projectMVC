@@ -98,6 +98,7 @@ Route::prefix('admin')->middleware(['CheckRole:admin'])->group(function () {
     });
     Route::prefix('user')->group(function () {
         Route::get('',[MasterUserController::class,'home']);
+        Route::get('luser',[MasterUserController::class,'luser']);
         Route::get('reset/{id}',[MasterUserController::class,'reset']);
         Route::get('delete/{id}',[MasterUserController::class,'delete']);
         Route::post('dosearch',[MasterUserController::class,'search']);

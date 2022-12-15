@@ -22,7 +22,7 @@
         <br><br>
         <h1>List User</h1>
         <div class="card-body">
-            <table class="table responsive table-dark" id="table">
+            <table class="table responsive table-dark" id="tableHasil">
                 <thead class="thead-dark">
                     <tr>
                         <th>ID User</th>
