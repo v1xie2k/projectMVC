@@ -16,7 +16,13 @@
             @endif
     @endif
     <h1>Edit Profile</h1>
-        <form action="{{ url('home/user/doedit/'.getYangLogin()->id) }}" method="post" enctype="multipart/form-data">
+        <label  class="form-label">Profile Picture</label>
+        <div class="card" style="width: 13rem;">
+            @if ($picture)
+            <img src="{{asset('storage/users/'.$picture)}}" class="card-img-top" alt="..." style="width: 13rem; height: 13rem;">
+            @endif
+        </div>
+        <form action="{{ url('home/user/doedit/'.getYangLogin()->id) }}" method="post" enctype="multipart/form-data" style="padding-top:300px; width:100%;">
             @csrf
             {{-- <input type="hidden" name="saldo" value=0>
             <input type="hidden" name="role" value="user"> --}}
@@ -56,12 +62,7 @@
             <button type="submit" class="btn btn-success">Save</button>
         </form>
         <br>
-        <label  class="form-label">User Picture</label>
-        <div class="card" style="width: 18rem;">
-            @if ($picture)
-            <img src="{{asset('storage/users/'.$picture)}}" class="card-img-top" alt="...">
-            @endif
-        </div>
+
     </div>
 
 @endsection

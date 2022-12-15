@@ -82,6 +82,6 @@ class UserSeeder extends Seeder
                 "updated_at" => date("Y-m-d H-i-s"),
             ],
         ]);
-        Users::factory()->count(10)->create();
+        Users::factory()->count(5)->create();
     }
 }
