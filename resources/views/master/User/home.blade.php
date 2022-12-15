@@ -5,7 +5,7 @@
 @endsection
 @section('body')
 @include('navbar2')
-    <div class="product">
+    <div class="productuser">
 
         @if (Session::has('pesan'))
         @php
@@ -19,7 +19,6 @@
         @endif
     @endif
 
-        <br><br>
         <h1>List User</h1>
         <div class="card-body">
             <table class="table responsive table-dark" id="table">
